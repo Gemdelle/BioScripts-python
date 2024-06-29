@@ -1,0 +1,5 @@
+Pillow~=9.4.0
+pygame~=2.5.2
+tk~= 0.1.0
+pyglet~=2.0.15
+moviepy~=1.0.3
