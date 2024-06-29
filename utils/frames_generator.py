@@ -2,8 +2,8 @@ import os
 
 import imageio
 
-# insert gif here
-gif_name = "frog_happy"
+# insert gif name here
+gif_name = "enemy"
 gif_path = f"../assets/gifs/{gif_name}.gif"
 frames_folder = f"../assets/gifs/frames/{gif_name}"
 

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="first commit.">
+      <change afterPath="$PROJECT_DIR$/assets/gifs/enemy.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gifs/frames/enemy/enemy_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gifs/frog_angry.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gifs/frog_neutral_1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/code_console.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/frog_happy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/player.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/splash_video.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game_backup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/assets_preloader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/constants.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/game_objects_repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/pygame/screens/splash.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/frames_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/frames_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/map_reference.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/map_reference.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2iWLh4q0zGoccTIwjxuwwtSBuzO" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Dev/BioScripts-python/assets/images",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Python"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Dev\BioScripts-python\assets\images" />
+      <recent name="C:\Dev\BioScripts-python\assets\gifs" />
+      <recent name="C:\Dev\BioScripts-python\assets\videos" />
+      <recent name="C:\Dev\BioScripts-python\ui\tkinter\components" />
+      <recent name="C:\Dev\BioScripts-python" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Dev\BioScripts-python\assets\gifs" />
+      <recent name="C:\Dev\BioScripts-python\assets\videos" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="" />
+      <created>1719601502798</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719601502798</updated>
+    </task>
+    <task id="LOCAL-00001" summary="first commit.">
+      <option name="closed" value="true" />
+      <created>1719632795544</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719632795544</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit." />
+  </component>
+</project>
