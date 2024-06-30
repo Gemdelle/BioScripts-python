@@ -64,8 +64,8 @@ enemy = Enemy()
 housekeeper = Housekeeper()
 
 # Calculate initial player position to center on the screen
-initial_player_x = (Constants.SCREEN_WIDTH - Constants.TILE_SIZE) // 2
-initial_player_y = (Constants.SCREEN_HEIGHT - Constants.TILE_SIZE) // 2
+initial_player_x = (Constants.SCREEN_WIDTH - Constants.TILE_SIZE) // 2 + 420
+initial_player_y = (Constants.SCREEN_HEIGHT - Constants.TILE_SIZE) // 2 + 570
 
 # Create player object
 player = Player(initial_player_x, initial_player_y)
