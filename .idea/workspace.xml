@@ -4,34 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="Agrega animaciones y primeras interacciones">
-      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_default_correct.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_default_grey.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_default_incorrect.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_default_new_correct.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_default_new_incorrect.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_fly.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/gifs/housekeeper_happy.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/gifs/housekeeper_sad.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/coding-area.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/coding-background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/heart-dead.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/instructions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/task-bar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/house_keeper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/introduction_1_video.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/introduction_2_video.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/tkinter/father_screen.py" afterDir="false" />
+    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="Agrega cosas nuevas.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaInterpreter.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tkinter/JavaInterpreter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/screens.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/screens.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/splash_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/splash_video.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/frames_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/frames_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/map_reference.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/map_reference.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/tkinter/father_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tkinter/father_screen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,11 +73,20 @@
       <option name="project" value="LOCAL" />
       <updated>1719632795544</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Agrega cosas nuevas.">
+      <option name="closed" value="true" />
+      <created>1719718593580</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719718593580</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit." />
+    <MESSAGE value="Agrega cosas nuevas." />
+    <option name="LAST_COMMIT_MESSAGE" value="Agrega cosas nuevas." />
   </component>
 </project>

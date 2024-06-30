@@ -46,7 +46,7 @@ class FatherScreen:
         # Create a clickable image
         self.run_button = tk.Label(self.root, image=self.run_button_image_tk, borderwidth=0)
         self.run_button.bind("<Button-1>", self.run_java_code)  # Bind left mouse button click
-        self.canvas.create_window(640, 720, anchor='nw', window=self.run_button)
+        self.canvas.create_window(300, 800, anchor='nw', window=self.run_button)
 
         # Output label
         self.output_label = tk.Label(self.root, text="Output:")
