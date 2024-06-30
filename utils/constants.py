@@ -11,10 +11,11 @@ class Constants:
     MOVE_SPEED = TILE_SIZE  # Number of pixels to move per second
     ZOOM_SCALE = 1.5  # Zoom scale factor
     PLAYER_SIZE = 180  # Player Size
-    HOLE_SIZE_1 = 80  # Hole Size
-    HOLE_SIZE_2 = 80  # Hole Size
-    HOLE_SIZE_3 = 80  # Hole Size
-    HOLE_SIZE_4 = 80  # Hole Size
+    HOLE_SIZE_1 = 240  # Hole Size
+    HOLE_SIZE_2 =  230  # Hole Size
+    HOLE_SIZE_3 =  250  # Hole Size
+    HOLE_SIZE_4 =  240  # Hole Size
+    HOLE_HEIGHT = 120 # Hole Height
     PLANT_SIZE = 80  # Plant Size
     MUSHROOM_SIZE = 140  # Plant Size
     SHRUB_1_SIZE = 140  # Plant Size

@@ -18,7 +18,7 @@ class Hole2:
         self.rect.x = x + Constants.HOLE_SIZE_2
         self.rect.y = y + Constants.HOLE_SIZE_2
         surf = pygame.image.load(resource_path("assets\\images\\hole-2.png")).convert_alpha()
-        surf = pygame.transform.scale(surf, (Constants.HOLE_SIZE_2, Constants.HOLE_SIZE_2))
+        surf = pygame.transform.scale(surf, (Constants.HOLE_SIZE_2, Constants.HOLE_HEIGHT))
         screen.blit(surf, (self.rect.x, self.rect.y))
 
         if self.is_colliding:
