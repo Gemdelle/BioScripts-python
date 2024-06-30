@@ -4,37 +4,32 @@ from utils.constants import Constants
 
 class Shrub2:
     def __init__(self):
-        self.frames = []
+        self.frames = {}
         self.frame_index = 0
         self.rect = pygame.Rect(0, 0, Constants.SHRUB_2_SIZE, Constants.SHRUB_2_SIZE)
         self.is_colliding = False
-        self.tooltip_text = "mushroom"
+        self.tooltip_text = "shrub"
         self.current_text_length = 0
         self.last_update_time = 0
         self.typing_speed = 100  # Time in milliseconds between each character
         self.visible = False
 
-    def load_frames(self):
-        if not self.frames:
-            frame_index = 1
-            while True:
-                frame_path = os.path.join("./assets/gifs/frames/shrub-2", f'shrub-2_{frame_index}.png')
-                if not os.path.exists(frame_path):
-                    break
+    def load_frame(self, index):
+        if index not in self.frames:
+            frame_path = os.path.join("./assets/gifs/frames/shrub-2", f'shrub-2_{index}.png')
+            if os.path.exists(frame_path):
                 surf = pygame.image.load(frame_path).convert_alpha()
                 surf = pygame.transform.scale(surf, (Constants.SHRUB_2_SIZE, Constants.SHRUB_2_SIZE))
-                self.frames.append(surf)
-                frame_index += 1
-                self.rect.width = Constants.SHRUB_2_SIZE
-                self.rect.height = Constants.SHRUB_2_SIZE
-
-    def unload_frames(self):
-        self.frames.clear()
+                self.frames[index] = surf
+            else:
+                self.frames[index] = None  # Mark as None if the frame does not exist
 
     def update_animation(self):
         if self.visible:
             current_time = pygame.time.get_ticks()
-            self.frame_index = (current_time // Constants.FRAME_DURATION_IN_MILLIS) % len(self.frames)
+            self.frame_index = (current_time // Constants.FRAME_DURATION_IN_MILLIS) % 200  # Assuming 200 frames
+            self.load_frame(self.frame_index)  # Lazy load the current frame
+
             if self.is_colliding:
                 if current_time - self.last_update_time > self.typing_speed:
                     self.last_update_time = current_time
@@ -51,8 +46,9 @@ class Shrub2:
 
         if self.visible:
             if not was_visible:
-                self.load_frames()
-            screen.blit(self.frames[int(self.frame_index)], (self.rect.x, self.rect.y))
+                self.load_frame(self.frame_index)
+            if self.frames[self.frame_index] is not None:
+                screen.blit(self.frames[self.frame_index], (self.rect.x, self.rect.y))
             if self.is_colliding:
                 # Render tooltip
                 font = pygame.font.Font(None, 24)  # You can specify a font file instead of None

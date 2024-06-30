@@ -4,7 +4,7 @@ from utils.constants import Constants
 
 class RedTree:
     def __init__(self):
-        self.frames = []
+        self.frames = {}
         self.frame_index = 0
         self.rect = pygame.Rect(0, 0, Constants.RED_TREE_SIZE, Constants.RED_TREE_SIZE)
         self.is_colliding = False
@@ -14,27 +14,22 @@ class RedTree:
         self.typing_speed = 100  # Time in milliseconds between each character
         self.visible = False
 
-    def load_frames(self):
-        if not self.frames:
-            frame_index = 1
-            while True:
-                frame_path = os.path.join("./assets/gifs/frames/tree-red", f'tree-red_{frame_index}.png')
-                if not os.path.exists(frame_path):
-                    break
+    def load_frame(self, index):
+        if index not in self.frames:
+            frame_path = os.path.join("./assets/gifs/frames/tree-red", f'tree-red_{index}.png')
+            if os.path.exists(frame_path):
                 surf = pygame.image.load(frame_path).convert_alpha()
                 surf = pygame.transform.scale(surf, (Constants.RED_TREE_SIZE, Constants.RED_TREE_SIZE))
-                self.frames.append(surf)
-                frame_index += 1
-                self.rect.width = Constants.RED_TREE_SIZE
-                self.rect.height = Constants.RED_TREE_SIZE
-
-    def unload_frames(self):
-        self.frames.clear()
+                self.frames[index] = surf
+            else:
+                self.frames[index] = None  # Mark as None if the frame does not exist
 
     def update_animation(self):
         if self.visible:
             current_time = pygame.time.get_ticks()
-            self.frame_index = (current_time // Constants.FRAME_DURATION_IN_MILLIS) % len(self.frames)
+            self.frame_index = (current_time // Constants.FRAME_DURATION_IN_MILLIS) % 200  # Assuming 200 frames
+            self.load_frame(self.frame_index)  # Lazy load the current frame
+
             if self.is_colliding:
                 if current_time - self.last_update_time > self.typing_speed:
                     self.last_update_time = current_time
@@ -51,8 +46,9 @@ class RedTree:
 
         if self.visible:
             if not was_visible:
-                self.load_frames()
-            screen.blit(self.frames[int(self.frame_index)], (self.rect.x, self.rect.y))
+                self.load_frame(self.frame_index)
+            if self.frames[self.frame_index] is not None:
+                screen.blit(self.frames[self.frame_index], (self.rect.x, self.rect.y))
             if self.is_colliding:
                 # Render tooltip
                 font = pygame.font.Font(None, 24)  # You can specify a font file instead of None
