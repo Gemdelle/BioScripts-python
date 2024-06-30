@@ -61,7 +61,8 @@ class Enemy:
         else:
             self.is_colliding = False
 
-    def talk(self, start_tkinter_app):
+    def talk(self, start_tkinter_app, wrong_command):
         if not self.is_colliding:
+            wrong_command()
             return
         start_tkinter_app()

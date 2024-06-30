@@ -4,23 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="first commit.">
-      <change afterPath="$PROJECT_DIR$/assets/gifs/enemy.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/gifs/frames/enemy/enemy_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/gifs/frog_angry.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/gifs/frog_neutral_1.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/code_console.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/frog_happy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/player.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/splash_video.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game_backup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/assets_preloader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/constants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/game_objects_repository.py" afterDir="false" />
+    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="Agrega animaciones y primeras interacciones">
+      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_default_correct.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_default_grey.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_default_incorrect.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_default_new_correct.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_default_new_incorrect.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gifs/father/father_fly.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gifs/housekeeper_happy.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gifs/housekeeper_sad.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/coding-area.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/coding-background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/heart-dead.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/instructions.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/task-bar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/house_keeper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/introduction_1_video.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/introduction_2_video.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/tkinter/father_screen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaInterpreter.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tkinter/JavaInterpreter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/screens.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/screens.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/splash_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/splash_video.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/pygame/screens/splash.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/frames_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/frames_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/map_reference.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/map_reference.py" afterDir="false" />
     </list>
@@ -39,12 +48,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2iWLh4q0zGoccTIwjxuwwtSBuzO" />
   <component name="ProjectViewState">
-    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -61,12 +69,13 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Dev\BioScripts-python\assets\images" />
+      <recent name="C:\Dev\BioScripts-python\assets\gifs\father" />
+      <recent name="C:\Dev\BioScripts-python\ui\tkinter" />
+      <recent name="C:\Dev\BioScripts-python\core" />
       <recent name="C:\Dev\BioScripts-python\assets\gifs" />
-      <recent name="C:\Dev\BioScripts-python\assets\videos" />
-      <recent name="C:\Dev\BioScripts-python\ui\tkinter\components" />
-      <recent name="C:\Dev\BioScripts-python" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Dev\BioScripts-python\ui\tkinter" />
       <recent name="C:\Dev\BioScripts-python\assets\gifs" />
       <recent name="C:\Dev\BioScripts-python\assets\videos" />
     </key>

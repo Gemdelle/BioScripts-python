@@ -1,19 +1,19 @@
-import os
 import pygame
 import sys
-import threading
 import tkinter as tk
-import time
 from moviepy.editor import VideoFileClip
-import numpy as np
-from PIL import Image
 import re
 
-from JavaInterpreter import JavaInterpreterApp
+from ui.tkinter.JavaInterpreter import JavaInterpreterApp
 from core.enemy import Enemy
 from core.frog_happy import FrogHappy
+from core.house_keeper import Housekeeper
+from core.introduction_1_video import Introduction1Video
+from core.introduction_2_video import Introduction2Video
 from core.player import Player
+from core.screens import Screens
 from core.splash_video import SplashVideo
+from ui.tkinter.father_screen import FatherScreen
 from utils.assets_preloader import AssetsPreloader
 from utils.constants import Constants
 from utils.map_reference import tile_map
@@ -36,7 +36,7 @@ screen_height = info.current_h
 
 # Set up the window to occupy the maximum resolution without full screen
 screen = pygame.display.set_mode((screen_width, screen_height))
-
+screen_selected = Screens.FATHER
 pygame.display.set_caption("BioScripts")
 clock = pygame.time.Clock()
 
@@ -59,6 +59,9 @@ frog = FrogHappy()
 # Initialize Enemy instance
 enemy = Enemy()
 
+# Initialize Housekeeper instance
+housekeeper = Housekeeper()
+
 # Calculate initial player position to center on the screen
 initial_player_x = (Constants.SCREEN_WIDTH - Constants.TILE_SIZE) // 2
 initial_player_y = (Constants.SCREEN_HEIGHT - Constants.TILE_SIZE) // 2
@@ -69,13 +72,19 @@ player = Player(initial_player_x, initial_player_y)
 # Create Splash
 splash_video = SplashVideo(screen_width, screen_height)
 
+# Create Introduction1Video
+introduction_1_video = None
+
+# Create Introduction2Video
+introduction_2_video = None
+
 # Function to run the Tkinter app
 def start_tkinter_app():
     global pygame_paused
     pygame_paused = True
 
     root = tk.Tk()
-    app = JavaInterpreterApp(root)
+    JavaInterpreterApp(root)
     root.protocol("WM_DELETE_WINDOW", lambda: on_close(root))
     # Remove window decorations
     root.overrideredirect(True)
@@ -86,7 +95,28 @@ def start_tkinter_app():
     # Function to exit the application
     def close_app(event=None):
         on_close(root)
-        root.destroy()
+
+    # Bind the Escape key to exit the application
+    root.bind('<Escape>', close_app)
+    root.mainloop()
+
+def start_father_screen():
+    global pygame_paused
+    pygame_paused = True
+
+    root = tk.Tk()
+    FatherScreen(root)
+    root.protocol("WM_DELETE_WINDOW", lambda: on_close(root))
+    # Remove window decorations
+    root.overrideredirect(True)
+
+    # Set the size and position of the Tkinter window
+    root.geometry(f"{screen_width}x{screen_height}+0+0")
+
+    # Function to exit the application
+    def close_app(event=None):
+        on_close(root)
+        go_to_game_screen_meet_housekeeper()
 
     # Bind the Escape key to exit the application
     root.bind('<Escape>', close_app)
@@ -97,9 +127,6 @@ def on_close(root):
     root.destroy()
     resume_pygame()
 
-
-# tkinter_thread = threading.Thread(target=start_tkinter_app)
-# tkinter_thread.start()
 
 # Flag to pause Pygame loop
 pygame_paused = False
@@ -115,7 +142,6 @@ def resume_pygame():
     pygame_paused = False
 
 is_video_playing = False
-is_clock_reseted = False
 
 # Text area for displaying key presses
 text_area_rect = pygame.Rect(70, screen_height - 210, 400, 200)
@@ -129,10 +155,35 @@ allowed_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 # Regex patterns for commands
 enemy_talk_command_pattern = r"player\.talk\(enemy\)"
 frog_talk_command_pattern = r"player\.talk\(frog\)"
+housekeeper_talk_command_pattern = r"player\.talk\(housekeeper\)"
+
+def wrong_command():
+    player.wrong_command()
+
+def go_to_game_screen_meet_housekeeper():
+    global screen_selected
+    print("CURRENT_SCREEN: GAME_SCREEN_MEET_HOUSEKEEPER")
+    screen_selected = Screens.GAME_SCREEN_MEET_HOUSEKEEPER
+
+def go_to_introduction_1():
+    global screen_selected, introduction_1_video
+    introduction_1_video = Introduction1Video(screen_width, screen_height)
+    print("CURRENT_SCREEN: INTRODUCTION_1")
+    screen_selected = Screens.INTRODUCTION_1
+
+def go_to_introduction_2():
+    global screen_selected, introduction_2_video
+    introduction_2_video = Introduction2Video(screen_width, screen_height)
+    print("CURRENT_SCREEN: INTRODUCTION_2")
+    screen_selected = Screens.INTRODUCTION_2
+
+def go_to_father_screen():
+    global screen_selected
+    print("CURRENT_SCREEN: FATHER")
+    screen_selected = Screens.FATHER
 
 # Game loop
 running = True
-initial_time = 0
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -140,15 +191,17 @@ while running:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_c:
                 text_area_visible = not text_area_visible
-                text_input = ""  # Clear text when toggling
+                text_input = ""
             elif text_area_visible:
                 if event.key == pygame.K_BACKSPACE:
                     text_input = text_input[:-1]
                 elif event.key == pygame.K_RETURN:
                     if re.match(enemy_talk_command_pattern, text_input):
-                        enemy.talk(start_tkinter_app)
+                        enemy.talk(start_tkinter_app,wrong_command)
                     elif re.match(frog_talk_command_pattern, text_input):
                         print("FROG")
+                    elif re.match(housekeeper_talk_command_pattern, text_input):
+                        housekeeper.talk(start_tkinter_app,wrong_command)
                     else:
                         print("wrong_code")
                         player.wrong_command()
@@ -157,27 +210,16 @@ while running:
                 elif event.unicode in allowed_characters:
                     text_input += event.unicode
 
-    if not is_clock_reseted:
-        initial_time = pygame.time.get_ticks()
-        is_clock_reseted = True
+    if screen_selected == Screens.GAME_SCREEN_MEET_HOUSEKEEPER:
+        # Pause Pygame loop if Tkinter app is running or if text area is visible
+        if pygame_paused or text_area_visible:
+            if text_area_visible:
+                # Draw text area background
+                screen.blit(assets.code_console_bg, (10, screen_height - 400))
+                text_surface = font.render(text_input, True, Constants.BLACK)
+                screen.blit(text_surface, (text_area_rect.x + 5, text_area_rect.y + 5))
+            continue
 
-    # Pause Pygame loop if Tkinter app is running or if text area is visible
-    if pygame_paused or text_area_visible:
-        if text_area_visible:
-            # Draw text area background
-            screen.blit(assets.code_console_bg, (10, screen_height - 400))
-            text_surface = font.render(text_input, True, Constants.BLACK)
-            screen.blit(text_surface, (text_area_rect.x + 5, text_area_rect.y + 5))
-            pygame.display.flip()
-        continue
-
-    # Handle player movement
-    keys = pygame.key.get_pressed()
-    move_x, move_y = player.handle_movement(keys)
-
-    current_time = (pygame.time.get_ticks() - initial_time) / 1000.0
-
-    if current_time >= clip.duration:
         camera_offset_x, camera_offset_y = player.get_camera_offset()
 
         screen.blit(background_img, (camera_offset_x, camera_offset_y))
@@ -194,6 +236,13 @@ while running:
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
                     frog.draw(screen, tile_x, tile_y)
+                    continue
+                elif tile_type == 6:  # HOUSEKEEPER
+                    housekeeper.update_animation()
+                    tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                    tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                    housekeeper.draw(screen, tile_x, tile_y)
+                    player.update_collision_objects(tile_type, housekeeper)
                     continue
                 elif tile_type == 7:  # ENEMY
                     enemy.update_animation()
@@ -216,17 +265,19 @@ while running:
                 screen.blit(tile_img, (tile_x, tile_y))
 
         player.draw(screen, camera_offset_x, camera_offset_y)
-        player.update(keys, move_x, move_y, screen)
+        player.update(screen)
         enemy.check_collision(player)
+        housekeeper.check_collision(player)
+    elif screen_selected == Screens.SPLASH:
+        splash_video.play_video(screen, go_to_introduction_1)
+    elif screen_selected == Screens.INTRODUCTION_1:
+        introduction_1_video.play_video(screen, go_to_introduction_2)
+    elif screen_selected == Screens.INTRODUCTION_2:
+        introduction_2_video.play_video(screen, go_to_father_screen)
+    elif screen_selected == Screens.FATHER:
+        start_father_screen()
 
-        pygame.display.flip()
-        clock.tick(60)
-    else:
-        # Splash Video
-        if not is_video_playing:
-            sound_manager.play_sound("splash_music")
-            is_video_playing = True
-        splash_video.play_video(screen, clock)
-
+    pygame.display.flip()
+    clock.tick(60)
 pygame.quit()
 sys.exit()

@@ -14,6 +14,7 @@ class Constants:
     PLANT_SIZE = 80  # Plant Size
     FROG_SIZE = 80  # Frog Size
     ENEMY_SIZE = 450  # ENEMY Size
+    HOUSE_KEEPER_SIZE = 500  # ENEMY Size
 
     # Constants for Tkinter
     JAVA_CODE_DELAY = 5  # Delay in seconds before starting Java code interpreter

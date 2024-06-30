@@ -3,11 +3,17 @@ from moviepy.editor import VideoFileClip
 import numpy as np
 from PIL import Image
 from utils.resource_path_util import resource_path
+from utils.sound_manager import SoundManager
+
 
 class SplashVideo:
     def __init__(self, screen_width, screen_height):
         self.clip = VideoFileClip(resource_path("assets\\videos\\splash.mp4"))
         self.new_width, self.new_height = self.calculate_resize(screen_width, screen_height)
+        self.sound_manager = SoundManager()
+        self.is_video_playing = False
+        self.is_clock_reseted = False
+        self.initial_time = pygame.time.get_ticks()
 
     def calculate_resize(self, screen_width, screen_height):
         aspect_ratio = self.clip.size[0] / self.clip.size[1]
@@ -30,40 +36,19 @@ class SplashVideo:
         surface = pygame.surfarray.make_surface(frame)
         return surface
 
-    def play_video(self, screen, clock):
-        is_video_playing = False
-        initial_time = 0
-        running = True
-        is_clock_reseted = False
+    def play_video(self, screen, go_to_next_screen):
+        current_time = (pygame.time.get_ticks() - self.initial_time) / 1000.0
 
-        while running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
+        if current_time >= self.clip.duration:
+            go_to_next_screen()
 
-            if not is_clock_reseted:
-                initial_time = pygame.time.get_ticks()
-                is_clock_reseted = True
+        if not self.is_video_playing:
+            self.sound_manager.play_sound("splash_music")
+            self.is_video_playing = True
 
-            current_time = (pygame.time.get_ticks() - initial_time) / 1000.0
+        current_frame = self.clip.get_frame(current_time)
+        current_frame = self.resize_frame(current_frame)
+        surface = self.frame_to_surface(current_frame)
 
-            if current_time >= self.clip.duration:
-                return True  # Video finished playing
-
-            if not is_video_playing:
-                # Start playing splash music here if needed
-                is_video_playing = True
-
-            current_frame = self.clip.get_frame(current_time)
-            current_frame = self.resize_frame(current_frame)
-            surface = self.frame_to_surface(current_frame)
-
-            screen.fill((0, 0, 0))
-            screen.blit(surface, ((screen.get_width() - self.new_width) // 2, (screen.get_height() - self.new_height) // 2))
-            pygame.display.flip()
-            clock.tick(65)
-
-        return False  # Video not finished playing
-
-    def get_video_duration(self):
-        return self.clip.duration
+        screen.fill((0, 0, 0))
+        screen.blit(surface, ((screen.get_width() - self.new_width) // 2, (screen.get_height() - self.new_height) // 2))

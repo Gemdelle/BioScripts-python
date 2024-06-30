@@ -83,7 +83,8 @@ class Player(pygame.sprite.Sprite):
         else:
             self.current_text_length = 0  # Reset text length when not showing wrong feedback
 
-    def update(self, keys, move_x, move_y, screen):
+    def update(self, screen):
+        keys = pygame.key.get_pressed()
         move_x, move_y = self.handle_movement(keys)
         self.update_position(move_x, move_y)
         self.update_animation()
