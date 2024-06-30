@@ -12,6 +12,7 @@ class Constants:
     PLAYER_SIZE = 180  # Player Size
     HOLE_SIZE = 80  # Hole Size
     PLANT_SIZE = 80  # Plant Size
+    MUSHROOM_SIZE = 60  # Plant Size
     FROG_SIZE = 80  # Frog Size
     ENEMY_SIZE = 450  # ENEMY Size
     HOUSE_KEEPER_SIZE = 500  # ENEMY Size

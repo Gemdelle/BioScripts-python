@@ -20,6 +20,7 @@ class AssetsPreloader:
             self.hole_tile_img_3 = None
             self.hole_tile_img_2 = None
             self.hole_tile_img_1 = None
+            self.dirt_img = None
             self.player_img_reference = None
             self.caterpillar_walk_frames = None
             self.HOLE_TILE_IMAGES = None
@@ -33,6 +34,8 @@ class AssetsPreloader:
         self.hole_tile_img_2 = pygame.image.load(resource_path("assets\\images\\hole-2.png")).convert_alpha()
         self.hole_tile_img_3 = pygame.image.load(resource_path("assets\\images\\hole-3.png")).convert_alpha()
         self.hole_tile_img_4 = pygame.image.load(resource_path("assets\\images\\hole-4.png")).convert_alpha()
+        self.dirt_img = pygame.image.load(resource_path("assets\\images\\dirt.png")).convert_alpha()
+        self.dirt_img = pygame.transform.scale(self.dirt_img, (Constants.TILE_SIZE * 4, Constants.TILE_SIZE * 4))
         self.plant_tile_img = pygame.image.load(resource_path("assets\\images\\plant.png")).convert_alpha()
         self.code_console_bg = pygame.image.load(resource_path("assets\\images\\code_console.png")).convert_alpha()
         self.code_console_bg = pygame.transform.scale(self.code_console_bg, (425, 340))

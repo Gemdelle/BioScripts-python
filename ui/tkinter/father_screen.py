@@ -1,9 +1,11 @@
+import glob
 import subprocess
 import tkinter as tk
 from tkinter import scrolledtext
 
 from PIL import Image, ImageTk
 
+from ui.tkinter.components.gif_image import AnimatedGIF
 from utils.resource_path_util import resource_path
 
 
@@ -56,14 +58,25 @@ class FatherScreen:
         self.output_text = scrolledtext.ScrolledText(self.root, width=60, height=10)
         self.canvas.create_window(640, 780, anchor='nw', window=self.output_text)
 
+        # Initial GIF
+        self.father_gif_root = resource_path("assets\\gifs\\father\\father_default_grey.gif")
+        self.animated_gif = AnimatedGIF(self.canvas, self.father_gif_root, 800, 150)
+        self.animated_gif.start_animation()
+
     def scroll_text(self, event):
         if event.keysym == "Up":
             self.input_text.yview_scroll(-1, "units")
         elif event.keysym == "Down":
             self.input_text.yview_scroll(1, "units")
 
+    def update_gif(self, new_gif_path):
+        self.animated_gif.destroy()
+        self.animated_gif = AnimatedGIF(self.canvas, new_gif_path, 800, 150)
+        self.animated_gif.start_animation()
+
     def run_java_code(self, event):
         print("LLEGO!")
+        self.update_gif(resource_path("assets\\gifs\\father\\father_default_new_incorrect.gif"))
         return
         java_code = self.input_text.get("1.0", tk.END)
 
