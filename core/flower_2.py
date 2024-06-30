@@ -18,7 +18,7 @@ class Flower2:
         if not self.frames:
             frame_index = 1
             while True:
-                frame_path = os.path.join("./assets/gifs/frames/flower-2", f'flower-1_{frame_index}.png')
+                frame_path = os.path.join("./assets/gifs/frames/flower-2", f'flower-2_{frame_index}.png')
                 if not os.path.exists(frame_path):
                     break
                 surf = pygame.image.load(frame_path).convert_alpha()
