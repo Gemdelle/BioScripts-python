@@ -25,7 +25,6 @@ from core.small_tree_1 import SmallTree1
 from core.small_tree_2 import SmallTree2
 from ui.tkinter.JavaInterpreter import JavaInterpreterApp
 from core.enemy import Enemy
-from core.frog_happy import FrogHappy
 from core.house_keeper import Housekeeper
 from core.introduction_1_video import Introduction1Video
 from core.introduction_2_video import Introduction2Video
@@ -95,8 +94,8 @@ introduction_1_video = None
 introduction_2_video = None
 
 # Initialize objects using list comprehensions
-red_tree = {str(i): RedTree() for i in range(78, 82)}
-blue_tree = {str(i): BlueTree() for i in range(68, 78)}
+red_tree = {str(i): RedTree() for i in range(72, 75)}
+blue_tree = {str(i): BlueTree() for i in range(68, 72)}
 small_tree = {str(i): (SmallTree1() if i % 2 == 0 else SmallTree2()) for i in range(64, 68)}
 shrubs = {str(i): (Shrub2() if i % 2 == 0 else Shrub1()) for i in range(59, 64)}
 flowers = {str(i): (Flower2() if i % 2 == 0 else Flower1()) for i in range(54, 59)}
@@ -323,14 +322,14 @@ while running:
                     small_tree[str(tile_type)].draw(screen, tile_x, tile_y)
                     small_tree[str(tile_type)].check_collision(player)
                     continue
-                if 68 <= tile_type <= 77:  # BLUE PLANTS
+                if 68 <= tile_type <= 71:  # BLUE PLANTS
                     blue_tree[str(tile_type)].update_animation()
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
                     blue_tree[str(tile_type)].draw(screen, tile_x, tile_y)
                     blue_tree[str(tile_type)].check_collision(player)
                     continue
-                if 78 <= tile_type <= 81:  # RED PLANTS
+                if 72 <= tile_type <= 74:  # RED PLANTS
                     red_tree[str(tile_type)].update_animation()
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
