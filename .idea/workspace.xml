@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="Agrega cosas nuevas.">
+    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="giph frames.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/game_map.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/game_map.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/constants.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +22,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Gemdelle"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Gemdelle/BioScripts-python.git",
+    "accountId": "725956b3-647f-4402-8180-13453ffa652e"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -36,7 +45,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.frames_generator.executor": "Run",
     "Python.game.executor": "Run",
+    "Python.map_reference.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
@@ -90,12 +101,56 @@
       <option name="project" value="LOCAL" />
       <updated>1719718593580</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Map &amp; Scale.">
+      <option name="closed" value="true" />
+      <created>1719759959442</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1719759959442</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Map &amp; Scale.">
+      <option name="closed" value="true" />
+      <created>1719761396359</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1719761396359</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Mushroom placement.">
+      <option name="closed" value="true" />
+      <created>1719770465042</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1719770465042</updated>
+    </task>
+    <task id="LOCAL-00006" summary="coding-area.png.">
+      <option name="closed" value="true" />
+      <created>1719772211376</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1719772211376</updated>
+    </task>
+    <task id="LOCAL-00007" summary="giph frames.">
+      <option name="closed" value="true" />
+      <created>1719773505456</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1719773505456</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit." />
     <MESSAGE value="Agrega cosas nuevas." />
-    <option name="LAST_COMMIT_MESSAGE" value="Agrega cosas nuevas." />
+    <MESSAGE value="Map &amp; Scale." />
+    <MESSAGE value="Mushroom placement." />
+    <MESSAGE value="coding-area.png." />
+    <MESSAGE value="giph frames." />
+    <option name="LAST_COMMIT_MESSAGE" value="giph frames." />
   </component>
 </project>
