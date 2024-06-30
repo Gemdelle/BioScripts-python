@@ -1,3 +1,6 @@
+import os
+
+import psutil
 import pygame
 import sys
 import tkinter as tk
@@ -92,15 +95,20 @@ introduction_1_video = None
 introduction_2_video = None
 
 # Initialize objects using list comprehensions
-# red_tree = {str(i): RedTree() for i in range(78, 82)}
-# blue_tree = {str(i): BlueTree() for i in range(68, 78)}
-# small_tree = {str(i): (SmallTree1() if i % 2 == 0 else SmallTree2()) for i in range(64, 68)}
-# shrubs = {str(i): (Shrub2() if i % 2 == 0 else Shrub1()) for i in range(59, 64)}
-# flowers = {str(i): (Flower2() if i % 2 == 0 else Flower1()) for i in range(54, 59)}
+red_tree = {str(i): RedTree() for i in range(78, 82)}
+blue_tree = {str(i): BlueTree() for i in range(68, 78)}
+small_tree = {str(i): (SmallTree1() if i % 2 == 0 else SmallTree2()) for i in range(64, 68)}
+shrubs = {str(i): (Shrub2() if i % 2 == 0 else Shrub1()) for i in range(59, 64)}
+flowers = {str(i): (Flower2() if i % 2 == 0 else Flower1()) for i in range(54, 59)}
 soil = {str(i): (Hole1() if i % 4 == 1 else Hole2() if i % 4 == 2 else Hole3() if i % 4 == 3 else Hole4()) for i in range(1, 13)}
 mushroom_plants = {str(i): MushroomPlant() for i in range(29, 54)}
-# frogs = {str(i): (FrogNautral1() if i % 3 == 0 else FrogNautral2() if i % 3 == 1 else FrogAngry()) for i in range(15, 29)}
+frogs = {str(i): (FrogNautral1() if i % 3 == 0 else FrogNautral2() if i % 3 == 1 else FrogAngry()) for i in range(15, 29)}
 
+
+def print_memory_usage():
+    process = psutil.Process(os.getpid())
+    mem_info = process.memory_info()
+    print(f"Memory Usage: {mem_info.rss / 1024 / 1024:.2f} MB")
 
 # Function to run the Tkinter app
 def start_tkinter_app():
@@ -184,7 +192,7 @@ allowed_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 enemy_talk_command_pattern = r"player\.talk\(enemy\)"
 frog_talk_command_pattern = r"player\.talk\(frog\)"
 housekeeper_talk_command_pattern = r"player\.talk\(housekeeper\)"
-
+print_memmory = False
 def wrong_command():
     player.wrong_command()
 
@@ -279,13 +287,13 @@ while running:
                     #player.update_collision_objects(tile_type, enemy)
                     continue
                 # ANIMALS
-                # if 15 <= tile_type <= 28:  # FROG
-                #     frogs[str(tile_type)].update_animation()
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     frogs[str(tile_type)].draw(screen, tile_x, tile_y)
-                #     frogs[str(tile_type)].check_collision(player)
-                #     continue
+                if 15 <= tile_type <= 28:  # FROG
+                    frogs[str(tile_type)].update_animation()
+                    tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                    tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                    frogs[str(tile_type)].draw(screen, tile_x, tile_y)
+                    frogs[str(tile_type)].check_collision(player)
+                    continue
                 # PLANTS
                 if 29 <= tile_type <= 53:  # MUSHROOMS PLANTS
                     mushroom_plants[str(tile_type)].update_animation()
@@ -294,41 +302,41 @@ while running:
                     mushroom_plants[str(tile_type)].draw(screen, tile_x, tile_y)
                     mushroom_plants[str(tile_type)].check_collision(player)
                     continue
-                # if 54 <= tile_type <= 58:  # FLOWER PLANTS
-                #     flowers[str(tile_type)].update_animation()
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     flowers[str(tile_type)].draw(screen, tile_x, tile_y)
-                #     flowers[str(tile_type)].check_collision(player)
-                #     continue
-                # if 59 <= tile_type <= 63:  # SHRUB PLANTS
-                #     shrubs[str(tile_type)].update_animation()
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     shrubs[str(tile_type)].draw(screen, tile_x, tile_y)
-                #     shrubs[str(tile_type)].check_collision(player)
-                #     continue
-                # if 64 <= tile_type <= 67:  # SMALL TREE PLANTS
-                #     small_tree[str(tile_type)].update_animation()
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     small_tree[str(tile_type)].draw(screen, tile_x, tile_y)
-                #     small_tree[str(tile_type)].check_collision(player)
-                #     continue
-                # if 68 <= tile_type <= 77:  # BLUE PLANTS
-                #     blue_tree[str(tile_type)].update_animation()
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     blue_tree[str(tile_type)].draw(screen, tile_x, tile_y)
-                #     blue_tree[str(tile_type)].check_collision(player)
-                #     continue
-                # if 78 <= tile_type <= 81:  # RED PLANTS
-                #     red_tree[str(tile_type)].update_animation()
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     red_tree[str(tile_type)].draw(screen, tile_x, tile_y)
-                #     red_tree[str(tile_type)].check_collision(player)
-                #     continue
+                if 54 <= tile_type <= 58:  # FLOWER PLANTS
+                    flowers[str(tile_type)].update_animation()
+                    tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                    tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                    flowers[str(tile_type)].draw(screen, tile_x, tile_y)
+                    flowers[str(tile_type)].check_collision(player)
+                    continue
+                if 59 <= tile_type <= 63:  # SHRUB PLANTS
+                    shrubs[str(tile_type)].update_animation()
+                    tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                    tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                    shrubs[str(tile_type)].draw(screen, tile_x, tile_y)
+                    shrubs[str(tile_type)].check_collision(player)
+                    continue
+                if 64 <= tile_type <= 67:  # SMALL TREE PLANTS
+                    small_tree[str(tile_type)].update_animation()
+                    tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                    tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                    small_tree[str(tile_type)].draw(screen, tile_x, tile_y)
+                    small_tree[str(tile_type)].check_collision(player)
+                    continue
+                if 68 <= tile_type <= 77:  # BLUE PLANTS
+                    blue_tree[str(tile_type)].update_animation()
+                    tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                    tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                    blue_tree[str(tile_type)].draw(screen, tile_x, tile_y)
+                    blue_tree[str(tile_type)].check_collision(player)
+                    continue
+                if 78 <= tile_type <= 81:  # RED PLANTS
+                    red_tree[str(tile_type)].update_animation()
+                    tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                    tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                    red_tree[str(tile_type)].draw(screen, tile_x, tile_y)
+                    red_tree[str(tile_type)].check_collision(player)
+                    continue
                 else:
                     continue
 
@@ -343,6 +351,9 @@ while running:
     elif screen_selected == Screens.FATHER:
         start_father_screen()
 
+    if not print_memmory:
+        print_memory_usage()
+        print_memmory = True
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
