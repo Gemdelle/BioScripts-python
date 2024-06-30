@@ -4,7 +4,22 @@ import tkinter as tk
 from moviepy.editor import VideoFileClip
 import re
 
+from core.blue_tree import BlueTree
+from core.flower_1 import Flower1
+from core.flower_2 import Flower2
+from core.frog_angry import FrogAngry
+from core.frog_neutral_1 import FrogNautral1
+from core.frog_neutral_2 import FrogNautral2
+from core.hole_1 import Hole1
+from core.hole_2 import Hole2
+from core.hole_3 import Hole3
+from core.hole_4 import Hole4
 from core.mushroom_plant import MushroomPlant
+from core.red_tree import RedTree
+from core.shrub_1 import Shrub1
+from core.shrub_2 import Shrub2
+from core.small_tree_1 import SmallTree1
+from core.small_tree_2 import SmallTree2
 from ui.tkinter.JavaInterpreter import JavaInterpreterApp
 from core.enemy import Enemy
 from core.frog_happy import FrogHappy
@@ -79,7 +94,82 @@ introduction_1_video = None
 # Create Introduction2Video
 introduction_2_video = None
 
-mushroom_plants = {str(i): MushroomPlant() for i in range(31, 52)}
+# red_tree = {
+#     "78": RedTree(),
+#     "79": RedTree(),
+#     "80": RedTree(),
+#     "81": RedTree(),
+# }
+
+# blue_tree = {
+#     "68": BlueTree(),
+#     "69": BlueTree(),
+#     "70": BlueTree(),
+#     "71": BlueTree(),
+#     "72": BlueTree(),
+#     "73": BlueTree(),
+#     "74": BlueTree(),
+#     "75": BlueTree(),
+#     "76": BlueTree(),
+#     "77": BlueTree(),
+# }
+
+# small_tree = {
+#     "64": SmallTree1(),
+#     "65": SmallTree2(),
+#     "66": SmallTree1(),
+#     "67": SmallTree2(),
+# }
+#
+# shrub = {
+#     "59": Shrub2(),
+#     "60": Shrub1(),
+#     "61": Shrub2(),
+#     "62": Shrub1(),
+#     "63": Shrub2(),
+# }
+#
+# flowers = {
+#     "54": Flower2(),
+#     "55": Flower1(),
+#     "56": Flower2(),
+#     "57": Flower1(),
+#     "58": Flower2(),
+# }
+
+soil = {
+    "1": Hole1(),
+    "2": Hole2(),
+    "3": Hole3(),
+    "4": Hole4(),
+    "5": Hole1(),
+    "6": Hole2(),
+    "7": Hole3(),
+    "8": Hole4(),
+    "9": Hole1(),
+    "10": Hole2(),
+    "11": Hole3(),
+    "12": Hole4(),
+}
+
+# frogs = {
+#     "15": FrogNautral1(),
+#     "16": FrogNautral2(),
+#     "17": FrogAngry(),
+#     "18": FrogNautral1(),
+#     "19": FrogNautral2(),
+#     "20": FrogNautral1(),
+#     "21": FrogNautral2(),
+#     "22": FrogAngry(),
+#     "23": FrogNautral1(),
+#     "24": FrogNautral2(),
+#     "25": FrogAngry(),
+#     "26": FrogNautral1(),
+#     "27": FrogAngry(),
+#     "28": FrogNautral1()
+# }
+
+mushroom_plants = {str(i): MushroomPlant() for i in range(29, 54)}
 
 # Function to run the Tkinter app
 def start_tkinter_app():
@@ -235,18 +325,10 @@ while running:
             for col in range(Constants.MAP_WIDTH):
                 tile_type = tile_map[row][col]
                 # SOIL
-                if tile_type == 1:  # HOLE
-                    tile_img = assets.HOLE_TILE_IMAGES[0]
-                # elif tile_type == 2:  # HOLE
-                #     tile_img = assets.HOLE_TILE_IMAGES[1]
-                # elif tile_type == 3:  # HOLE
-                #     tile_img = assets.HOLE_TILE_IMAGES[2]
-                # elif tile_type == 4:  # HOLE
-                #     tile_img = assets.HOLE_TILE_IMAGES[3]
-                # # ... hasta 14
-                # elif tile_type == 5:  # HOLE
-                #     tile_img = assets.dirt_img
-                # # ... hasta 14
+                if 1 <= tile_type <= 12:  # HOLE
+                    tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                    tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                    soil[str(tile_type)].draw(screen, tile_x, tile_y)
                 # CHARACTERS
                 elif tile_type == 15:  # HOUSEKEEPER
                     housekeeper.update_animation()
@@ -262,57 +344,13 @@ while running:
                     enemy.draw(screen, tile_x, tile_y)
                     #player.update_collision_objects(tile_type, enemy)
                     continue
-               # ANIMALS
-                # elif tile_type == 17:  # FROG
-                #     frog.update_animation()
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     frog.draw(screen, tile_x, tile_y)
-                #     continue
-                # # ... hasta 14
-                # # PLANTS
-                if 31 <= tile_type <= 51:  # MUSHROOMS PLANTS
+                # PLANTS
+                if 29 <= tile_type <= 53:  # MUSHROOMS PLANTS
                     mushroom_plants[str(tile_type)].update_animation()
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
                     mushroom_plants[str(tile_type)].draw(screen, tile_x, tile_y)
                     continue
-                # ... hasta 20
-                # elif tile_type == 52:  # FLOWER PLANTS
-                #     tile_img = assets.PLANT_TILE_IMAGES[0]
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     screen.blit(tile_img, (tile_x, tile_y))
-                #     continue
-                # # ... hasta 5
-                # elif tile_type == 58:  # SHRUB PLANTS
-                #     tile_img = assets.PLANT_TILE_IMAGES[0]
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     screen.blit(tile_img, (tile_x, tile_y))
-                #     continue
-                # # ... hasta 5
-                # elif tile_type == 64:  # SMALL TREES PLANTS
-                #     tile_img = assets.PLANT_TILE_IMAGES[0]
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     screen.blit(tile_img, (tile_x, tile_y))
-                #     continue
-                # # ... hasta 4
-                # elif tile_type == 69:  # BLUE TREES PLANTS
-                #     tile_img = assets.PLANT_TILE_IMAGES[0]
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     screen.blit(tile_img, (tile_x, tile_y))
-                #     continue
-                # # ... hasta 12
-                # elif tile_type == 82:  # RED TREES PLANTS
-                #     tile_img = assets.PLANT_TILE_IMAGES[0]
-                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                #     screen.blit(tile_img, (tile_x, tile_y))
-                #     continue
-                # # ... hasta 4
                 else:
                     continue
 
