@@ -5,7 +5,7 @@ from utils.constants import Constants
 class RedTree:
     def __init__(self):
         self.frames = {}
-        self.frame_index = 0
+        self.frame_index = 1
         self.rect = pygame.Rect(0, 0, Constants.RED_TREE_SIZE, Constants.RED_TREE_SIZE)
         self.is_colliding = False
         self.tooltip_text = "red tree"
@@ -27,7 +27,7 @@ class RedTree:
     def update_animation(self):
         if self.visible:
             current_time = pygame.time.get_ticks()
-            self.frame_index = (current_time // Constants.FRAME_DURATION_IN_MILLIS) % 200  # Assuming 200 frames
+            self.frame_index = (current_time // Constants.FRAME_DURATION_IN_MILLIS) % 41  # Assuming 200 frames
             self.load_frame(self.frame_index)  # Lazy load the current frame
 
             if self.is_colliding:
