@@ -60,8 +60,6 @@ class MushroomPlant:
                 text_surf = font.render(text_to_display, True, Constants.WHITE)
                 text_rect = text_surf.get_rect(center=(self.rect.centerx, self.rect.top - 10))
                 screen.blit(text_surf, text_rect)
-        elif was_visible:
-            self.unload_frames()
 
     def is_visible(self, screen):
         screen_rect = screen.get_rect()
