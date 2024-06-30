@@ -4,7 +4,7 @@ import pygame
 class Constants:
     SCREEN_WIDTH = 1280
     SCREEN_HEIGHT = 720
-    TILE_SIZE = 40
+    TILE_SIZE = 23
     MAP_WIDTH = 200  # Number of tiles wide
     MAP_HEIGHT = 200  # Number of tiles high
     MOVE_SPEED = TILE_SIZE // 6  # Number of pixels to move per second

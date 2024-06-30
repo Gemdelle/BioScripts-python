@@ -36,7 +36,7 @@ screen_height = info.current_h
 
 # Set up the window to occupy the maximum resolution without full screen
 screen = pygame.display.set_mode((screen_width, screen_height))
-screen_selected = Screens.SPLASH
+screen_selected = Screens.GAME_SCREEN_MEET_HOUSEKEEPER
 pygame.display.set_caption("BioScripts")
 clock = pygame.time.Clock()
 
@@ -46,7 +46,7 @@ assets.preload()
 
 # Load background image and scale it
 try:
-    background_img = pygame.image.load(resource_path("assets\\images\\game_map.png")).convert()
+    background_img = pygame.image.load(resource_path("assets\\images\\guide_map.png")).convert()
 except pygame.error as e:
     print("Error loading background image:", e)
     sys.exit()
@@ -242,15 +242,17 @@ while running:
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
                     housekeeper.draw(screen, tile_x, tile_y)
-                    player.update_collision_objects(tile_type, housekeeper)
+                    #player.update_collision_objects(tile_type, housekeeper)
                     continue
                 elif tile_type == 7:  # ENEMY
                     enemy.update_animation()
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
                     enemy.draw(screen, tile_x, tile_y)
-                    player.update_collision_objects(tile_type, enemy)
+                    #player.update_collision_objects(tile_type, enemy)
                     continue
+
+
                 elif tile_type == 9:  # BLOCKER
                     tile_img = assets.HOLE_TILE_IMAGES[2]
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x

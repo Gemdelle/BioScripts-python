@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="Agrega cosas nuevas.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/game_map.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/game_map.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/tkinter/father_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tkinter/father_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/constants.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,10 +36,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.game.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Dev/BioScripts-python/assets/images",
+    "last_opened_file_path": "C:/Users/Gemdelle/Downloads/BioScripts/BioScripts-python",
     "settings.editor.selected.configurable": "preferences.sourceCode.Python"
   }
 }]]></component>
@@ -55,6 +57,13 @@
       <recent name="C:\Dev\BioScripts-python\assets\gifs" />
       <recent name="C:\Dev\BioScripts-python\assets\videos" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
