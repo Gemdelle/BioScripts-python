@@ -18,21 +18,21 @@ class Constants:
     HOLE_HEIGHT = 120 # Hole Height
     PLANT_SIZE = 80  # Plant Size
     MUSHROOM_SIZE = 140  # Plant Size
-    SHRUB_1_SIZE = 140  # Plant Size
-    SHRUB_2_SIZE = 140  # Plant Size
-    ENEMY_SIZE = 450  # ENEMY Size
+    SHRUB_1_SIZE = 500  # Plant Size
+    SHRUB_2_SIZE = 500  # Plant Size
+    ENEMY_SIZE = 550  # ENEMY Size
     HOUSE_KEEPER_SIZE = 550  # ENEMY Size
     BLUE_TREE_SIZE = 100  # BLUE_TREE Size
-    FLOWER_1_SIZE = 80  # BLUE_TREE Size
-    FLOWER_2_SIZE = 80  # BLUE_TREE Size
-    FROG_SIZE = 80  # Frog Size
-    FROG_ANGRY_SIZE = 80  # BLUE_TREE Size
-    FROG_HAPPY_SIZE = 80  # BLUE_TREE Size
-    FROG_NEUTRAL_1_SIZE = 80  # BLUE_TREE Size
-    FROG_NEUTRAL_2_SIZE = 80  # BLUE_TREE Size
-    RED_TREE_SIZE = 80  # BLUE_TREE Size
-    SMALL_TREE_1_SIZE = 80  # BLUE_TREE Size
-    SMALL_TREE_2_SIZE = 80  # BLUE_TREE Size
+    FLOWER_1_SIZE = 400  # BLUE_TREE Size
+    FLOWER_2_SIZE = 400  # BLUE_TREE Size
+    FROG_SIZE = 120  # Frog Size
+    FROG_ANGRY_SIZE = 120  # BLUE_TREE Size
+    FROG_HAPPY_SIZE = 120  # BLUE_TREE Size
+    FROG_NEUTRAL_1_SIZE = 120  # BLUE_TREE Size
+    FROG_NEUTRAL_2_SIZE = 120  # BLUE_TREE Size
+    RED_TREE_SIZE = 900  # BLUE_TREE Size
+    SMALL_TREE_1_SIZE = 700  # BLUE_TREE Size
+    SMALL_TREE_2_SIZE = 650  # BLUE_TREE Size
 
     # Constants for Tkinter
     JAVA_CODE_DELAY = 5  # Delay in seconds before starting Java code interpreter

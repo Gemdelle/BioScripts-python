@@ -269,7 +269,7 @@ while running:
                     soil[str(tile_type)].draw(screen, tile_x, tile_y)
                     continue
                 # CHARACTERS
-                elif tile_type == 15:  # HOUSEKEEPER
+                elif tile_type == 13:  # HOUSEKEEPER
                     housekeeper.update_animation()
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
@@ -277,7 +277,7 @@ while running:
                     housekeeper.check_collision(player)
                     #player.update_collision_objects(tile_type, housekeeper)
                     continue
-                elif tile_type == 16:  # ENEMY
+                elif tile_type == 14:  # ENEMY
                     enemy.update_animation()
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
