@@ -3,7 +3,7 @@ import os
 import imageio
 
 # insert gif name here
-gif_name = "mushroom-default"
+gif_name = "tree-red"
 gif_path = f"../assets/gifs/{gif_name}.gif"
 frames_folder = f"../assets/gifs/frames/{gif_name}"
 
