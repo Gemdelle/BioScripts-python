@@ -22,7 +22,6 @@ class Constants:
     SHRUB_2_SIZE = 500  # Plant Size
     ENEMY_SIZE = 550  # ENEMY Size
     HOUSE_KEEPER_SIZE = 550  # ENEMY Size
-    BLUE_TREE_SIZE = 100  # BLUE_TREE Size
     FLOWER_1_SIZE = 400  # BLUE_TREE Size
     FLOWER_2_SIZE = 400  # BLUE_TREE Size
     FROG_SIZE = 120  # Frog Size
@@ -31,6 +30,7 @@ class Constants:
     FROG_NEUTRAL_1_SIZE = 120  # BLUE_TREE Size
     FROG_NEUTRAL_2_SIZE = 120  # BLUE_TREE Size
     RED_TREE_SIZE = 900  # BLUE_TREE Size
+    BLUE_TREE_SIZE = 900  # BLUE_TREE Size
     SMALL_TREE_1_SIZE = 700  # BLUE_TREE Size
     SMALL_TREE_2_SIZE = 650  # BLUE_TREE Size
 
