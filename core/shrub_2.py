@@ -20,6 +20,7 @@ class Shrub2:
             if os.path.exists(frame_path):
                 surf = pygame.image.load(frame_path).convert_alpha()
                 surf = pygame.transform.scale(surf, (Constants.SHRUB_2_SIZE, Constants.SHRUB_2_SIZE))
+                surf = pygame.transform.flip(surf, True, False)
                 self.frames[index] = surf
             else:
                 self.frames[index] = None  # Mark as None if the frame does not exist
