@@ -6,7 +6,7 @@ class MushroomPlant:
     def __init__(self):
         self.frames = []
         self.frame_index = 0
-        self.rect = pygame.Rect(0, 0, Constants.HOUSE_KEEPER_SIZE, Constants.HOUSE_KEEPER_SIZE)
+        self.rect = pygame.Rect(0, 0, Constants.MUSHROOM_SIZE, Constants.MUSHROOM_SIZE)
         self.is_colliding = False
         self.tooltip_text = "mushroom"
         self.current_text_length = 0
@@ -56,7 +56,6 @@ class MushroomPlant:
         camera_offset_x, camera_offset_y = player.get_camera_offset()
         player_collision_rect = pygame.Rect(player.rect.x + camera_offset_x, player.rect.y + camera_offset_y, player.rect.w, player.rect.h)
         if enemy_collision_rect.colliderect(player_collision_rect):
-            print("COLLIDING")
             self.is_colliding = True
         else:
             self.is_colliding = False

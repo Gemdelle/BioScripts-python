@@ -69,9 +69,6 @@ except pygame.error as e:
 
 background_img = pygame.transform.scale(background_img, (Constants.MAP_WIDTH * Constants.TILE_SIZE, Constants.TILE_SIZE * Constants.MAP_HEIGHT))
 
-# Initialize Frog instance
-frog = FrogHappy()
-
 # Initialize Enemy instance
 enemy = Enemy()
 
@@ -94,82 +91,16 @@ introduction_1_video = None
 # Create Introduction2Video
 introduction_2_video = None
 
-# red_tree = {
-#     "78": RedTree(),
-#     "79": RedTree(),
-#     "80": RedTree(),
-#     "81": RedTree(),
-# }
-
-# blue_tree = {
-#     "68": BlueTree(),
-#     "69": BlueTree(),
-#     "70": BlueTree(),
-#     "71": BlueTree(),
-#     "72": BlueTree(),
-#     "73": BlueTree(),
-#     "74": BlueTree(),
-#     "75": BlueTree(),
-#     "76": BlueTree(),
-#     "77": BlueTree(),
-# }
-
-# small_tree = {
-#     "64": SmallTree1(),
-#     "65": SmallTree2(),
-#     "66": SmallTree1(),
-#     "67": SmallTree2(),
-# }
-#
-# shrub = {
-#     "59": Shrub2(),
-#     "60": Shrub1(),
-#     "61": Shrub2(),
-#     "62": Shrub1(),
-#     "63": Shrub2(),
-# }
-#
-# flowers = {
-#     "54": Flower2(),
-#     "55": Flower1(),
-#     "56": Flower2(),
-#     "57": Flower1(),
-#     "58": Flower2(),
-# }
-
-soil = {
-    "1": Hole1(),
-    "2": Hole2(),
-    "3": Hole3(),
-    "4": Hole4(),
-    "5": Hole1(),
-    "6": Hole2(),
-    "7": Hole3(),
-    "8": Hole4(),
-    "9": Hole1(),
-    "10": Hole2(),
-    "11": Hole3(),
-    "12": Hole4(),
-}
-
-# frogs = {
-#     "15": FrogNautral1(),
-#     "16": FrogNautral2(),
-#     "17": FrogAngry(),
-#     "18": FrogNautral1(),
-#     "19": FrogNautral2(),
-#     "20": FrogNautral1(),
-#     "21": FrogNautral2(),
-#     "22": FrogAngry(),
-#     "23": FrogNautral1(),
-#     "24": FrogNautral2(),
-#     "25": FrogAngry(),
-#     "26": FrogNautral1(),
-#     "27": FrogAngry(),
-#     "28": FrogNautral1()
-# }
-
+# Initialize objects using list comprehensions
+# red_tree = {str(i): RedTree() for i in range(78, 82)}
+# blue_tree = {str(i): BlueTree() for i in range(68, 78)}
+# small_tree = {str(i): (SmallTree1() if i % 2 == 0 else SmallTree2()) for i in range(64, 68)}
+# shrubs = {str(i): (Shrub2() if i % 2 == 0 else Shrub1()) for i in range(59, 64)}
+# flowers = {str(i): (Flower2() if i % 2 == 0 else Flower1()) for i in range(54, 59)}
+soil = {str(i): (Hole1() if i % 4 == 1 else Hole2() if i % 4 == 2 else Hole3() if i % 4 == 3 else Hole4()) for i in range(1, 13)}
 mushroom_plants = {str(i): MushroomPlant() for i in range(29, 54)}
+# frogs = {str(i): (FrogNautral1() if i % 3 == 0 else FrogNautral2() if i % 3 == 1 else FrogAngry()) for i in range(15, 29)}
+
 
 # Function to run the Tkinter app
 def start_tkinter_app():
@@ -329,12 +260,14 @@ while running:
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
                     soil[str(tile_type)].draw(screen, tile_x, tile_y)
+                    continue
                 # CHARACTERS
                 elif tile_type == 15:  # HOUSEKEEPER
                     housekeeper.update_animation()
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
                     housekeeper.draw(screen, tile_x, tile_y)
+                    housekeeper.check_collision(player)
                     #player.update_collision_objects(tile_type, housekeeper)
                     continue
                 elif tile_type == 16:  # ENEMY
@@ -342,26 +275,65 @@ while running:
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
                     enemy.draw(screen, tile_x, tile_y)
+                    enemy.check_collision(player)
                     #player.update_collision_objects(tile_type, enemy)
                     continue
+                # ANIMALS
+                # if 15 <= tile_type <= 28:  # FROG
+                #     frogs[str(tile_type)].update_animation()
+                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                #     frogs[str(tile_type)].draw(screen, tile_x, tile_y)
+                #     frogs[str(tile_type)].check_collision(player)
+                #     continue
                 # PLANTS
                 if 29 <= tile_type <= 53:  # MUSHROOMS PLANTS
                     mushroom_plants[str(tile_type)].update_animation()
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
                     mushroom_plants[str(tile_type)].draw(screen, tile_x, tile_y)
+                    mushroom_plants[str(tile_type)].check_collision(player)
                     continue
+                # if 54 <= tile_type <= 58:  # FLOWER PLANTS
+                #     flowers[str(tile_type)].update_animation()
+                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                #     flowers[str(tile_type)].draw(screen, tile_x, tile_y)
+                #     flowers[str(tile_type)].check_collision(player)
+                #     continue
+                # if 59 <= tile_type <= 63:  # SHRUB PLANTS
+                #     shrubs[str(tile_type)].update_animation()
+                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                #     shrubs[str(tile_type)].draw(screen, tile_x, tile_y)
+                #     shrubs[str(tile_type)].check_collision(player)
+                #     continue
+                # if 64 <= tile_type <= 67:  # SMALL TREE PLANTS
+                #     small_tree[str(tile_type)].update_animation()
+                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                #     small_tree[str(tile_type)].draw(screen, tile_x, tile_y)
+                #     small_tree[str(tile_type)].check_collision(player)
+                #     continue
+                # if 68 <= tile_type <= 77:  # BLUE PLANTS
+                #     blue_tree[str(tile_type)].update_animation()
+                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                #     blue_tree[str(tile_type)].draw(screen, tile_x, tile_y)
+                #     blue_tree[str(tile_type)].check_collision(player)
+                #     continue
+                # if 78 <= tile_type <= 81:  # RED PLANTS
+                #     red_tree[str(tile_type)].update_animation()
+                #     tile_x = col * Constants.TILE_SIZE + camera_offset_x
+                #     tile_y = row * Constants.TILE_SIZE + camera_offset_y
+                #     red_tree[str(tile_type)].draw(screen, tile_x, tile_y)
+                #     red_tree[str(tile_type)].check_collision(player)
+                #     continue
                 else:
                     continue
 
-                tile_x = col * Constants.TILE_SIZE + camera_offset_x
-                tile_y = row * Constants.TILE_SIZE + camera_offset_y
-                screen.blit(tile_img, (tile_x, tile_y))
-
         player.draw(screen, camera_offset_x, camera_offset_y)
         player.update(screen)
-        enemy.check_collision(player)
-        housekeeper.check_collision(player)
     elif screen_selected == Screens.SPLASH:
         splash_video.play_video(screen, go_to_introduction_1)
     elif screen_selected == Screens.INTRODUCTION_1:

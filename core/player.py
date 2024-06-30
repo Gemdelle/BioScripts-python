@@ -3,7 +3,6 @@ import pygame
 from utils.assets_preloader import AssetsPreloader
 from utils.constants import Constants
 from utils.game_objects_repository import GameObjectsRepository
-from utils.map_reference import tile_map
 
 assets = AssetsPreloader()
 class Player(pygame.sprite.Sprite):

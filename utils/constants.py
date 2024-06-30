@@ -11,12 +11,27 @@ class Constants:
     MOVE_SPEED = TILE_SIZE  # Number of pixels to move per second
     ZOOM_SCALE = 1.5  # Zoom scale factor
     PLAYER_SIZE = 180  # Player Size
-    HOLE_SIZE = 80  # Hole Size
+    HOLE_SIZE_1 = 80  # Hole Size
+    HOLE_SIZE_2 = 80  # Hole Size
+    HOLE_SIZE_3 = 80  # Hole Size
+    HOLE_SIZE_4 = 80  # Hole Size
     PLANT_SIZE = 80  # Plant Size
     MUSHROOM_SIZE = 140  # Plant Size
-    FROG_SIZE = 80  # Frog Size
+    SHRUB_1_SIZE = 140  # Plant Size
+    SHRUB_2_SIZE = 140  # Plant Size
     ENEMY_SIZE = 450  # ENEMY Size
     HOUSE_KEEPER_SIZE = 550  # ENEMY Size
+    BLUE_TREE_SIZE = 100  # BLUE_TREE Size
+    FLOWER_1_SIZE = 80  # BLUE_TREE Size
+    FLOWER_2_SIZE = 80  # BLUE_TREE Size
+    FROG_SIZE = 80  # Frog Size
+    FROG_ANGRY_SIZE = 80  # BLUE_TREE Size
+    FROG_HAPPY_SIZE = 80  # BLUE_TREE Size
+    FROG_NEUTRAL_1_SIZE = 80  # BLUE_TREE Size
+    FROG_NEUTRAL_2_SIZE = 80  # BLUE_TREE Size
+    RED_TREE_SIZE = 80  # BLUE_TREE Size
+    SMALL_TREE_1_SIZE = 80  # BLUE_TREE Size
+    SMALL_TREE_2_SIZE = 80  # BLUE_TREE Size
 
     # Constants for Tkinter
     JAVA_CODE_DELAY = 5  # Delay in seconds before starting Java code interpreter
