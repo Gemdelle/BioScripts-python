@@ -15,6 +15,12 @@ class AssetsPreloader:
 
     def __init__(self):
         if not self._initialized:
+            # UI
+            self.corner_img = None
+            self.character_frame_img = None
+            self.level_bar_img = None
+            self.item_container_img = None
+
             self.plant_tile_img = None
             self.hole_tile_img_4 = None
             self.hole_tile_img_3 = None
@@ -30,6 +36,20 @@ class AssetsPreloader:
             self._initialized = True
 
     def preload(self):
+        #UI
+        self.corner_img = pygame.image.load(resource_path("assets\\images\\corner.png")).convert_alpha()
+        self.corner_img = pygame.transform.scale(self.corner_img, (380, 380))
+
+        self.character_frame_img = pygame.image.load(resource_path("assets\\images\\character-frame.png")).convert_alpha()
+        self.character_frame_img = pygame.transform.scale(self.character_frame_img, (380, 380))
+
+        self.level_bar_img = pygame.image.load(resource_path("assets\\images\\level-bar.png")).convert_alpha()
+        self.level_bar_img = pygame.transform.scale(self.level_bar_img, (650, 130))
+
+        self.item_container_img = pygame.image.load(resource_path("assets\\images\\item-container.png")).convert_alpha()
+        self.item_container_img = pygame.transform.scale(self.item_container_img, (75, 75))
+
+        #PLANTS
         self.hole_tile_img_1 = pygame.image.load(resource_path("assets\\images\\hole-1.png")).convert_alpha()
         self.hole_tile_img_2 = pygame.image.load(resource_path("assets\\images\\hole-2.png")).convert_alpha()
         self.hole_tile_img_3 = pygame.image.load(resource_path("assets\\images\\hole-3.png")).convert_alpha()

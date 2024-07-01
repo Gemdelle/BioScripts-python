@@ -64,7 +64,7 @@ assets.preload()
 
 # Load background image and scale it
 try:
-    background_img = pygame.image.load(resource_path("assets\\images\\guide_map.png")).convert()
+    background_img = pygame.image.load(resource_path("assets\\images\\game_map.png")).convert()
 except pygame.error as e:
     print("Error loading background image:", e)
     sys.exit()
@@ -255,6 +255,8 @@ while running:
                 screen.blit(text_surface, (text_area_rect.x + 5, text_area_rect.y + 5))
             continue
 
+
+
         camera_offset_x, camera_offset_y = player.get_camera_offset()
 
         screen.blit(background_img, (camera_offset_x, camera_offset_y))
@@ -341,6 +343,28 @@ while running:
 
         player.draw(screen, camera_offset_x, camera_offset_y)
         player.update(screen)
+
+        # UI
+        surf = pygame.transform.flip(assets.corner_img, False, True)
+        screen.blit(surf, (screen_width-surf.get_rect().width,0))
+
+        screen.blit(assets.corner_img, (screen_width-surf.get_rect().width,screen_height-surf.get_rect().height))
+
+        surf2 = pygame.transform.flip(assets.corner_img, True, False)
+        screen.blit(surf2, (0,screen_height-surf2.get_rect().height))
+
+        base = 395
+        suma = 95
+
+        screen.blit(assets.character_frame_img, (20,20))
+        screen.blit(assets.level_bar_img, (340,50))
+        screen.blit(assets.item_container_img, (base,190))
+        screen.blit(assets.item_container_img, (base+suma,190))
+        screen.blit(assets.item_container_img, (base+suma*2,190))
+        screen.blit(assets.item_container_img, (base+suma*3,190))
+        screen.blit(assets.item_container_img, (base+suma*4,190))
+        screen.blit(assets.item_container_img, (base+suma*5,190))
+
     elif screen_selected == Screens.SPLASH:
         splash_video.play_video(screen, go_to_introduction_1)
     elif screen_selected == Screens.INTRODUCTION_1:
