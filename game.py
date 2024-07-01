@@ -180,6 +180,7 @@ is_video_playing = False
 
 # Text area for displaying key presses
 text_area_rect = pygame.Rect(70, screen_height - 210, 400, 200)
+#bioscripts_font =
 font = pygame.font.Font(None, 40)
 text_area_visible = False
 text_input = ""
