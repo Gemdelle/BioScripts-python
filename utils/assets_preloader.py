@@ -33,6 +33,11 @@ class AssetsPreloader:
             self.PLANT_TILE_IMAGES = None
             self.code_console_bg = None
             self._assets_preloaded = None
+            self.fruit_flower_img = None
+            self.fruit_mushroom_img = None
+            self.fruit_shrub_img = None
+            self.fruit_small_tree_img = None
+            self.fruit_tree_img = None
             self._initialized = True
 
     def preload(self):
@@ -48,6 +53,22 @@ class AssetsPreloader:
 
         self.item_container_img = pygame.image.load(resource_path("assets\\images\\item-container.png")).convert_alpha()
         self.item_container_img = pygame.transform.scale(self.item_container_img, (75, 75))
+
+        #FRUITS
+        self.fruit_flower_img = pygame.image.load(resource_path("assets\\images\\fruits\\fruit-flower.png")).convert_alpha()
+        self.fruit_flower_img = pygame.transform.scale(self.fruit_flower_img, (75, 75))
+
+        self.fruit_mushroom_img = pygame.image.load(resource_path("assets\\images\\fruits\\fruit-mushroom.png")).convert_alpha()
+        self.fruit_mushroom_img = pygame.transform.scale(self.fruit_mushroom_img, (75, 75))
+
+        self.fruit_shrub_img = pygame.image.load(resource_path("assets\\images\\fruits\\fruit-shrub.png")).convert_alpha()
+        self.fruit_shrub_img = pygame.transform.scale(self.fruit_shrub_img, (75, 75))
+
+        self.fruit_small_tree_img = pygame.image.load(resource_path("assets\\images\\fruits\\fruit-small-tree.png")).convert_alpha()
+        self.fruit_small_tree_img = pygame.transform.scale(self.fruit_small_tree_img, (75, 75))
+
+        self.fruit_tree_img = pygame.image.load(resource_path("assets\\images\\fruits\\fruit-tree.png")).convert_alpha()
+        self.fruit_tree_img = pygame.transform.scale(self.fruit_tree_img, (75, 75))
 
         #PLANTS
         self.hole_tile_img_1 = pygame.image.load(resource_path("assets\\images\\hole-1.png")).convert_alpha()

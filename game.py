@@ -191,6 +191,14 @@ allowed_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 enemy_talk_command_pattern = r"player\.talk\(enemy\)"
 frog_talk_command_pattern = r"player\.talk\(frog\)"
 housekeeper_talk_command_pattern = r"player\.talk\(housekeeper\)"
+harvest_mushroom_command_pattern = r"player\.harvest\(mushroom\)"
+harvest_flower_command_pattern = r"player\.harvest\(flower\)"
+harvest_shrub_command_pattern = r"player\.harvest\(shrub\)"
+harvest_small_tree_command_pattern = r"player\.harvest\(small_tree\)"
+harvest_tree_command_pattern = r"player\.harvest\(tree\)"
+
+plant_hole_command_pattern = r"player\.plant\(hole\)"
+
 print_memmory = False
 def wrong_command():
     player.wrong_command()
@@ -217,8 +225,115 @@ def go_to_father_screen():
     print("CURRENT_SCREEN: FATHER")
     screen_selected = Screens.FATHER
 
+harvested_fruits = []
+
+def on_successful_harvest(fruit):
+    harvested_fruits.append(fruit)
+
 # Game loop
 running = True
+
+
+def draw_item_container_1():
+    base = 395
+    screen.blit(assets.item_container_img, (base, 190))
+    if len(harvested_fruits) > 0:
+        if harvested_fruits[0] == "flower":
+            screen.blit(assets.fruit_flower_img, (base, 190))
+        elif harvested_fruits[0] == "mushroom":
+            screen.blit(assets.fruit_mushroom_img, (base, 190))
+        elif harvested_fruits[0] == "shrub":
+            screen.blit(assets.fruit_shrub_img, (base, 190))
+        elif harvested_fruits[0] == "small-tree":
+            screen.blit(assets.fruit_small_tree_img, (base, 190))
+        elif harvested_fruits[0] == "tree":
+            screen.blit(assets.fruit_tree_img, (base, 190))
+
+
+def draw_item_container_2():
+    base = 395
+    suma = 95
+    screen.blit(assets.item_container_img, (base + suma, 190))
+    if len(harvested_fruits) > 1:
+        if harvested_fruits[1] == "flower":
+            screen.blit(assets.fruit_flower_img, (base + suma, 190))
+        elif harvested_fruits[1] == "mushroom":
+            screen.blit(assets.fruit_mushroom_img, (base + suma, 190))
+        elif harvested_fruits[1] == "shrub":
+            screen.blit(assets.fruit_shrub_img, (base + suma, 190))
+        elif harvested_fruits[1] == "small-tree":
+            screen.blit(assets.fruit_small_tree_img, (base + suma, 190))
+        elif harvested_fruits[1] == "tree":
+            screen.blit(assets.fruit_tree_img, (base + suma, 190))
+
+def draw_item_container_3():
+    base = 395
+    suma = 95
+    screen.blit(assets.item_container_img, (base + suma * 2, 190))
+    if len(harvested_fruits) > 2:
+        if harvested_fruits[2] == "flower":
+            screen.blit(assets.fruit_flower_img, (base + suma * 2, 190))
+        elif harvested_fruits[2] == "mushroom":
+            screen.blit(assets.fruit_mushroom_img, (base + suma * 2, 190))
+        elif harvested_fruits[2] == "shrub":
+            screen.blit(assets.fruit_shrub_img, (base + suma * 2, 190))
+        elif harvested_fruits[2] == "small-tree":
+            screen.blit(assets.fruit_small_tree_img, (base + suma * 2, 190))
+        elif harvested_fruits[2] == "tree":
+            screen.blit(assets.fruit_tree_img, (base + suma * 2, 190))
+
+
+def draw_item_container_4():
+    base = 395
+    suma = 95
+    screen.blit(assets.item_container_img, (base + suma * 3, 190))
+    if len(harvested_fruits) > 3:
+        if harvested_fruits[3] == "flower":
+            screen.blit(assets.fruit_flower_img, (base + suma * 3, 190))
+        elif harvested_fruits[3] == "mushroom":
+            screen.blit(assets.fruit_mushroom_img, (base + suma * 3, 190))
+        elif harvested_fruits[3] == "shrub":
+            screen.blit(assets.fruit_shrub_img, (base + suma * 3, 190))
+        elif harvested_fruits[3] == "small-tree":
+            screen.blit(assets.fruit_small_tree_img, (base + suma * 3, 190))
+        elif harvested_fruits[3] == "tree":
+            screen.blit(assets.fruit_tree_img, (base + suma * 3, 190))
+
+
+def draw_item_container_5():
+    base = 395
+    suma = 95
+    screen.blit(assets.item_container_img, (base + suma * 4, 190))
+    if len(harvested_fruits) > 4:
+        if harvested_fruits[4] == "flower":
+            screen.blit(assets.fruit_flower_img, (base + suma * 4, 190))
+        elif harvested_fruits[4] == "mushroom":
+            screen.blit(assets.fruit_mushroom_img, (base + suma * 4, 190))
+        elif harvested_fruits[4] == "shrub":
+            screen.blit(assets.fruit_shrub_img, (base + suma * 4, 190))
+        elif harvested_fruits[4] == "small-tree":
+            screen.blit(assets.fruit_small_tree_img, (base + suma * 4, 190))
+        elif harvested_fruits[4] == "tree":
+            screen.blit(assets.fruit_tree_img, (base + suma * 4, 190))
+
+
+def draw_item_container_6():
+    base = 395
+    suma = 95
+    screen.blit(assets.item_container_img, (base + suma * 5, 190))
+    if len(harvested_fruits) > 5:
+        if harvested_fruits[5] == "flower":
+            screen.blit(assets.fruit_flower_img, (base + suma * 5, 190))
+        elif harvested_fruits[5] == "mushroom":
+            screen.blit(assets.fruit_mushroom_img, (base + suma * 5, 190))
+        elif harvested_fruits[5] == "shrub":
+            screen.blit(assets.fruit_shrub_img, (base + suma * 5, 190))
+        elif harvested_fruits[5] == "small-tree":
+            screen.blit(assets.fruit_small_tree_img, (base + suma * 5, 190))
+        elif harvested_fruits[5] == "tree":
+            screen.blit(assets.fruit_tree_img, (base + suma * 5, 190))
+
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -233,6 +348,30 @@ while running:
                 elif event.key == pygame.K_RETURN:
                     if re.match(enemy_talk_command_pattern, text_input):
                         enemy.talk(start_tkinter_app,wrong_command)
+                    elif re.match(harvest_mushroom_command_pattern, text_input):
+                        for key, plant in mushroom_plants.items():
+                            if plant.is_colliding:
+                                plant.harvest(wrong_command, on_successful_harvest)
+                    elif re.match(harvest_flower_command_pattern, text_input):
+                        for key, plant in flowers.items():
+                            if plant.is_colliding:
+                                plant.harvest(wrong_command, on_successful_harvest)
+                    elif re.match(harvest_shrub_command_pattern, text_input):
+                        for key, plant in shrubs.items():
+                            if plant.is_colliding:
+                                plant.harvest(wrong_command, on_successful_harvest)
+                    elif re.match(harvest_small_tree_command_pattern, text_input):
+                        for key, plant in small_tree.items():
+                            if plant.is_colliding:
+                                plant.harvest(wrong_command, on_successful_harvest)
+                    elif re.match(harvest_tree_command_pattern, text_input):
+                        for key, plant in red_tree.items():
+                            if plant.is_colliding:
+                                plant.harvest(wrong_command, on_successful_harvest)
+                    elif re.match(plant_hole_command_pattern, text_input):
+                        for key, hole in soil.items():
+                            if hole.is_colliding:
+                                hole.plant(wrong_command)
                     elif re.match(frog_talk_command_pattern, text_input):
                         print("FROG")
                     elif re.match(housekeeper_talk_command_pattern, text_input):
@@ -255,8 +394,6 @@ while running:
                 screen.blit(text_surface, (text_area_rect.x + 5, text_area_rect.y + 5))
             continue
 
-
-
         camera_offset_x, camera_offset_y = player.get_camera_offset()
 
         screen.blit(background_img, (camera_offset_x, camera_offset_y))
@@ -266,9 +403,11 @@ while running:
                 tile_type = tile_map[row][col]
                 # SOIL
                 if 1 <= tile_type <= 12:  # HOLE
+                    soil[str(tile_type)].update_animation()
                     tile_x = col * Constants.TILE_SIZE + camera_offset_x
                     tile_y = row * Constants.TILE_SIZE + camera_offset_y
                     soil[str(tile_type)].draw(screen, tile_x, tile_y)
+                    soil[str(tile_type)].check_collision(player)
                     continue
                 # CHARACTERS
                 elif tile_type == 13:  # HOUSEKEEPER
@@ -358,12 +497,12 @@ while running:
 
         screen.blit(assets.character_frame_img, (20,20))
         screen.blit(assets.level_bar_img, (340,50))
-        screen.blit(assets.item_container_img, (base,190))
-        screen.blit(assets.item_container_img, (base+suma,190))
-        screen.blit(assets.item_container_img, (base+suma*2,190))
-        screen.blit(assets.item_container_img, (base+suma*3,190))
-        screen.blit(assets.item_container_img, (base+suma*4,190))
-        screen.blit(assets.item_container_img, (base+suma*5,190))
+        draw_item_container_1()
+        draw_item_container_2()
+        draw_item_container_3()
+        draw_item_container_4()
+        draw_item_container_5()
+        draw_item_container_6()
 
     elif screen_selected == Screens.SPLASH:
         splash_video.play_video(screen, go_to_introduction_1)

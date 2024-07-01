@@ -14,6 +14,12 @@ class Flower2:
         self.typing_speed = 100  # Time in milliseconds between each character
         self.visible = False
 
+        self.gif_frames = []
+        self.gif_frame_index = 0
+        self.gif_last_update_time = 0
+        self.gif_animation_speed = 100  # Time in milliseconds between each GIF frame
+        self.is_harvesting = False
+
     def load_frame(self, index):
         if index not in self.frames:
             frame_path = os.path.join("./assets/gifs/frames/flower-2", f'flower-2_{index}.png')
@@ -23,10 +29,17 @@ class Flower2:
                 self.frames[index] = surf
             else:
                 self.frames[index] = None  # Mark as None if the frame does not exist
+    def load_gif_frames(self):
+        for i in range(29):  # Assuming the GIF has 24 frames
+            frame_path = os.path.join("./assets/gifs/frames/harvest-flower", f'harvest-flower_{i}.png')
+            if os.path.exists(frame_path):
+                surf = pygame.image.load(frame_path).convert_alpha()
+                surf = pygame.transform.scale(surf, (Constants.MUSHROOM_SIZE, Constants.MUSHROOM_SIZE))
+                self.gif_frames.append(surf)
 
     def update_animation(self):
+        current_time = pygame.time.get_ticks()
         if self.visible:
-            current_time = pygame.time.get_ticks()
             self.frame_index = (current_time // Constants.FRAME_DURATION_IN_MILLIS) % 199  # Assuming 200 frames
             self.load_frame(self.frame_index)  # Lazy load the current frame
 
@@ -37,6 +50,12 @@ class Flower2:
                         self.current_text_length += 1
             else:
                 self.current_text_length = 0
+        if self.is_harvesting:
+            if current_time - self.gif_last_update_time > self.gif_animation_speed:
+                self.gif_last_update_time = current_time
+                self.gif_frame_index = (self.gif_frame_index + 1) % len(self.gif_frames)
+                if self.gif_frame_index == len(self.gif_frames) - 1:
+                    self.is_harvesting = False  # Stop the animation when all frames are displayed
 
     def draw(self, screen, x, y):
         self.rect.x = x + Constants.FLOWER_2_SIZE
@@ -56,6 +75,10 @@ class Flower2:
                 text_surf = font.render(text_to_display, True, Constants.WHITE)
                 text_rect = text_surf.get_rect(center=(self.rect.centerx, self.rect.top - 10))
                 screen.blit(text_surf, text_rect)
+        if self.is_harvesting and self.gif_frames:
+            gif_frame = self.gif_frames[self.gif_frame_index]
+            gif_frame_rect = gif_frame.get_rect(center=(self.rect.centerx, self.rect.top - 10))
+            screen.blit(gif_frame, gif_frame_rect)
 
     def is_visible(self, screen):
         screen_rect = screen.get_rect()
@@ -70,8 +93,11 @@ class Flower2:
         else:
             self.is_colliding = False
 
-    def talk(self, start_tkinter_app, wrong_command):
+    def harvest(self, wrong_command, on_successful_harvest):
         if not self.is_colliding:
             wrong_command()
-            return
-        start_tkinter_app()
+        self.load_gif_frames()
+        self.is_harvesting = True
+        self.gif_frame_index = 0
+        self.gif_last_update_time = pygame.time.get_ticks()
+        on_successful_harvest("flower")

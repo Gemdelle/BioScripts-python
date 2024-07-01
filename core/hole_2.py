@@ -13,13 +13,32 @@ class Hole2:
         self.tooltip_text = "hole"
         self.current_text_length = 0
         self.last_update_time = 0
+        self.is_planted = False
+        self.typing_speed = 100
+
+    def update_animation(self):
+        current_time = pygame.time.get_ticks()
+        if self.is_colliding:
+            if current_time - self.last_update_time > self.typing_speed:
+                self.last_update_time = current_time
+                if self.current_text_length < len(self.tooltip_text):
+                    self.current_text_length += 1
+        else:
+            self.current_text_length = 0
 
     def draw(self, screen, x, y):
         self.rect.x = x + Constants.HOLE_SIZE_2
         self.rect.y = y + Constants.HOLE_SIZE_2
-        surf = pygame.image.load(resource_path("assets\\images\\hole-2.png")).convert_alpha()
-        surf = pygame.transform.scale(surf, (Constants.HOLE_SIZE_2, Constants.HOLE_HEIGHT))
-        screen.blit(surf, (self.rect.x, self.rect.y))
+
+        if self.is_planted:
+            surf = pygame.image.load(resource_path("assets\\images\\dirt.png")).convert_alpha()
+            surf = pygame.transform.scale(surf, (Constants.HOLE_SIZE_1, Constants.HOLE_HEIGHT))
+            screen.blit(surf, (self.rect.x, self.rect.y))
+            self.tooltip_text = "dirt"
+        else:
+            surf = pygame.image.load(resource_path("assets\\images\\hole-2.png")).convert_alpha()
+            surf = pygame.transform.scale(surf, (Constants.HOLE_SIZE_2, Constants.HOLE_HEIGHT))
+            screen.blit(surf, (self.rect.x, self.rect.y))
 
         if self.is_colliding:
             # Render tooltip
@@ -38,8 +57,8 @@ class Hole2:
         else:
             self.is_colliding = False
 
-    def talk(self, start_tkinter_app, wrong_command):
+    def plant(self, wrong_command):
         if not self.is_colliding:
             wrong_command()
             return
-        start_tkinter_app()
+        self.is_planted = True
