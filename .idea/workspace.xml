@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="fruit giph.">
+    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="pop-up.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/frames_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/frames_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +207,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719807325681</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="giphs.">
+      <option name="closed" value="true" />
+      <created>1719871845760</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1719871845760</updated>
+    </task>
+    <task id="LOCAL-00017" summary="pop-up.">
+      <option name="closed" value="true" />
+      <created>1719872154472</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1719872154472</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -220,6 +236,8 @@
     <MESSAGE value="map plant positioning." />
     <MESSAGE value="remove black background." />
     <MESSAGE value="fruit giph." />
-    <option name="LAST_COMMIT_MESSAGE" value="fruit giph." />
+    <MESSAGE value="giphs." />
+    <MESSAGE value="pop-up." />
+    <option name="LAST_COMMIT_MESSAGE" value="pop-up." />
   </component>
 </project>

@@ -3,7 +3,7 @@ import os
 import imageio
 
 # insert gif name here
-gif_name = "analysis-housekeeper-final"
+gif_name = "plants-disease-bar"
 gif_path = f"../assets/gifs/{gif_name}.gif"
 frames_folder = f"../assets/gifs/frames/{gif_name}"
 
