@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="giph frames.">
+    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="fruit giph.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,18 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Gemdelle"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Gemdelle&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Gemdelle/BioScripts-python.git",
-    "accountId": "725956b3-647f-4402-8180-13453ffa652e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Gemdelle/BioScripts-python.git&quot;,
+    &quot;accountId&quot;: &quot;725956b3-647f-4402-8180-13453ffa652e&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -43,18 +44,19 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.frames_generator.executor": "Run",
-    "Python.game.executor": "Run",
-    "Python.map_reference.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Gemdelle/Downloads/BioScripts/BioScripts-python",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Python"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.constants.executor&quot;: &quot;Run&quot;,
+    &quot;Python.frames_generator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.map_reference.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Gemdelle/Downloads/BioScripts/BioScripts-python&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Python&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Dev\BioScripts-python\assets\images" />
@@ -141,7 +143,71 @@
       <option name="project" value="LOCAL" />
       <updated>1719773505456</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="map plant positioning.">
+      <option name="closed" value="true" />
+      <created>1719786639446</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1719786639446</updated>
+    </task>
+    <task id="LOCAL-00009" summary="map plant positioning.">
+      <option name="closed" value="true" />
+      <created>1719788341870</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1719788341870</updated>
+    </task>
+    <task id="LOCAL-00010" summary="remove black background.">
+      <option name="closed" value="true" />
+      <created>1719788906549</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1719788906549</updated>
+    </task>
+    <task id="LOCAL-00011" summary="remove black background.">
+      <option name="closed" value="true" />
+      <created>1719789196926</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1719789196926</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fruit giph.">
+      <option name="closed" value="true" />
+      <created>1719801101860</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1719801101860</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fruit giph.">
+      <option name="closed" value="true" />
+      <created>1719801145127</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1719801145127</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fruit giph.">
+      <option name="closed" value="true" />
+      <created>1719801224148</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1719801224148</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fruit giph.">
+      <option name="closed" value="true" />
+      <created>1719807325681</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1719807325681</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -151,6 +217,9 @@
     <MESSAGE value="Mushroom placement." />
     <MESSAGE value="coding-area.png." />
     <MESSAGE value="giph frames." />
-    <option name="LAST_COMMIT_MESSAGE" value="giph frames." />
+    <MESSAGE value="map plant positioning." />
+    <MESSAGE value="remove black background." />
+    <MESSAGE value="fruit giph." />
+    <option name="LAST_COMMIT_MESSAGE" value="fruit giph." />
   </component>
 </project>
