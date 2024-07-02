@@ -18,6 +18,7 @@ from core.analyze_mushroom import AnalyzeMushroom
 from core.analyze_small_tree import AnalyzeSmallTree
 from core.analyze_tree import AnalyzeTree
 from core.blue_tree import BlueTree
+from core.disease_bar import AnalyzeDiseaseBar
 from core.flower_1 import Flower1
 from core.flower_2 import Flower2
 from core.frog_angry import FrogAngry
@@ -64,7 +65,7 @@ screen_height = info.current_h
 
 # Set up the window to occupy the maximum resolution without full screen
 screen = pygame.display.set_mode((screen_width, screen_height))
-screen_selected = Screens.FATHER
+screen_selected = Screens.GAME_SCREEN_MEET_HOUSEKEEPER
 pygame.display.set_caption("BioScripts")
 clock = pygame.time.Clock()
 
@@ -139,6 +140,8 @@ analyzing_small_tree = False
 
 analyze_tree = AnalyzeTree()
 analyzing_tree = False
+
+disease_bar = AnalyzeDiseaseBar()
 
 def print_memory_usage():
     process = psutil.Process(os.getpid())
@@ -507,6 +510,12 @@ def draw_analyze_tree():
     #analyze_house_keeper.draw(screen, pop_up_coordinates[0] + (392 // 2), pop_up_coordinates[1] - (464 // 2)) # drawing
     analyze_tree.draw(screen, pop_up_coordinates[0] + 270, pop_up_coordinates[1] - 300) # drawing
 
+def draw_analyze_disease_bar():
+    global disease_bar, screen
+    disease_bar.update_animation()
+    pop_up_coordinates = (270,50)
+    disease_bar.draw(screen, pop_up_coordinates[0] - 300, pop_up_coordinates[1] + 230) # drawing
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -717,20 +726,28 @@ while running:
         if show_overlay:
             if analyzing_house_keeper:
                 draw_analyze_house_keeper()
+                draw_analyze_disease_bar()
             if analyzing_enemy:
                 draw_analyze_enemy()
+                draw_analyze_disease_bar()
             if analyzing_frog:
                 draw_analyze_frog()
+                draw_analyze_disease_bar()
             if analyzing_mushroom:
                 draw_analyze_mushroom()
+                draw_analyze_disease_bar()
             if analyzing_flower:
                 draw_analyze_flower()
+                draw_analyze_disease_bar()
             if analyzing_shrub:
                 draw_analyze_shrub()
+                draw_analyze_disease_bar()
             if analyzing_small_tree:
                 draw_analyze_small_tree()
+                draw_analyze_disease_bar()
             if analyzing_tree:
                 draw_analyze_tree()
+                draw_analyze_disease_bar()
 
         # UI
         surf = pygame.transform.flip(assets.corner_img, False, True)
