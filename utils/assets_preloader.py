@@ -38,6 +38,8 @@ class AssetsPreloader:
             self.fruit_shrub_img = None
             self.fruit_small_tree_img = None
             self.fruit_tree_img = None
+
+            self.mushroom_analyze_img = None
             self._initialized = True
 
     def preload(self):
@@ -91,6 +93,11 @@ class AssetsPreloader:
         ]
         self.player_img_reference = pygame.image.load(resource_path("assets\\gifs\\caterpillar_walk.gif")).convert_alpha()
         self.player_img_reference = pygame.transform.scale(self.player_img_reference, (Constants.PLAYER_SIZE, Constants.PLAYER_SIZE))
+
+        # Analyze
+
+        self.mushroom_analyze_img = pygame.image.load(resource_path("assets\\images\\pop-up-mushroom.png")).convert_alpha()
+        self.mushroom_analyze_img = pygame.transform.scale(self.mushroom_analyze_img, (1056, 736))
 
         self.generate_caterpillar_walk_frames()
         self._assets_preloaded = True
