@@ -9,7 +9,14 @@ import re
 
 from pygame import MOUSEBUTTONDOWN
 
+from core.analyze_character_enemy import AnalyzeCharacterEnemy
+from core.analyze_character_flower import AnalyzeFlower
+from core.analyze_character_frog import AnalyzeCharacterFrog
 from core.analyze_character_housekeeper import AnalyzeCharacterHousekeeper
+from core.analyze_character_shrub import AnalyzeShrub
+from core.analyze_mushroom import AnalyzeMushroom
+from core.analyze_small_tree import AnalyzeSmallTree
+from core.analyze_tree import AnalyzeTree
 from core.blue_tree import BlueTree
 from core.flower_1 import Flower1
 from core.flower_2 import Flower2
@@ -80,6 +87,8 @@ enemy = Enemy()
 # Initialize Housekeeper instance
 housekeeper = Housekeeper()
 
+
+
 # Calculate initial player position to center on the screen
 initial_player_x = (Constants.SCREEN_WIDTH - Constants.TILE_SIZE) // 2 + 420
 initial_player_y = (Constants.SCREEN_HEIGHT - Constants.TILE_SIZE) // 2 + 570
@@ -106,8 +115,30 @@ soil = {str(i): (Hole1() if i % 4 == 1 else Hole2() if i % 4 == 2 else Hole3() i
 mushroom_plants = {str(i): MushroomPlant() for i in range(29, 54)}
 frogs = {str(i): (FrogNautral1() if i % 3 == 0 else FrogNautral2() if i % 3 == 1 else FrogAngry()) for i in range(15, 29)}
 
+# ANALYSYS VARIABLES
 analyze_house_keeper = AnalyzeCharacterHousekeeper()
 analyzing_house_keeper = False
+
+analyze_enemy = AnalyzeCharacterEnemy()
+analyzing_enemy = False
+
+analyze_frog = AnalyzeCharacterFrog()
+analyzing_frog = False
+
+analyze_mushroom = AnalyzeMushroom()
+analyzing_mushroom = False
+
+analyze_flower = AnalyzeFlower()
+analyzing_flower = False
+
+analyze_shrub = AnalyzeShrub()
+analyzing_shrub = False
+
+analyze_small_tree = AnalyzeSmallTree()
+analyzing_small_tree = False
+
+analyze_tree = AnalyzeTree()
+analyzing_tree = False
 
 def print_memory_usage():
     process = psutil.Process(os.getpid())
@@ -184,9 +215,9 @@ def resume_pygame():
 is_video_playing = False
 
 # Text area for displaying key presses
-text_area_rect = pygame.Rect(70, screen_height - 210, 400, 200)
-#bioscripts_font =
-font = pygame.font.Font(None, 40)
+text_area_rect = pygame.Rect(180, screen_height - 320, 400, 200)
+font_path = os.path.join("assets", "fonts", "BavarianCrown.ttf")
+font = pygame.font.Font(font_path, 32)
 text_area_visible = False
 text_input = ""
 
@@ -206,6 +237,13 @@ harvest_tree_command_pattern = r"player\.harvest\(tree\)"
 plant_hole_command_pattern = r"player\.plant\(hole\)"
 
 analyze_housekeeper_command_pattern = r"player\.analyze\(housekeeper\)"
+analyze_enemy_command_pattern = r"player\.analyze\(enemy\)"
+analyze_frog_command_pattern = r"player\.analyze\(frog\)"
+analyze_mushroom_command_pattern = r"player\.analyze\(mushroom\)"
+analyze_flower_command_pattern = r"player\.analyze\(flower\)"
+analyze_shrub_command_pattern = r"player\.analyze\(shrub\)"
+analyze_small_tree_command_pattern = r"player\.analyze\(small_tree\)"
+analyze_tree_command_pattern = r"player\.analyze\(tree\)"
 
 print_memmory = False
 def wrong_command():
@@ -351,11 +389,124 @@ def draw_analyze_house_keeper():
     screen.blit(overlay, (0, 0))
     surf = pygame.transform.flip(assets.corner_img, True, True)
     screen.blit(surf, (0, 0))
-    pop_up_coordinates = (screen_width // 2 - (assets.mushroom_analyze_img.get_rect().width // 2), screen_height // 2 - (assets.mushroom_analyze_img.get_rect().height // 2))
-    screen.blit(assets.mushroom_analyze_img, pop_up_coordinates)
+    #pop_up_coordinates = (screen_width // 2 - (assets.housekeeper_analyze_img.get_rect().width // 2), screen_height // 2 - (assets.mushroom_analyze_img.get_rect().height // 2))
+    pop_up_coordinates = (270,50)
+    screen.blit(assets.housekeeper_analyze_img, pop_up_coordinates)
     analyze_house_keeper.update_animation()
-    analyze_house_keeper.draw(screen, pop_up_coordinates[0] + (392 // 2), pop_up_coordinates[1] - (464 // 2))
+    #analyze_house_keeper.draw(screen, pop_up_coordinates[0] + (392 // 2), pop_up_coordinates[1] - (464 // 2)) # drawing
+    analyze_house_keeper.draw(screen, pop_up_coordinates[0] + 270, pop_up_coordinates[1] - 300) # drawing
 
+def draw_analyze_enemy():
+    global surf, analyze_enemy, screen
+    OPACITY = 180
+    overlay = pygame.Surface((screen_width, screen_height))
+    overlay.set_alpha(OPACITY)
+    overlay.fill(Constants.BLACK)
+    screen.blit(overlay, (0, 0))
+    surf = pygame.transform.flip(assets.corner_img, True, True)
+    screen.blit(surf, (0, 0))
+    #pop_up_coordinates = (screen_width // 2 - (assets.housekeeper_analyze_img.get_rect().width // 2), screen_height // 2 - (assets.mushroom_analyze_img.get_rect().height // 2))
+    pop_up_coordinates = (270,50)
+    screen.blit(assets.enemy_analyze_img, pop_up_coordinates)
+    analyze_enemy.update_animation()
+    #analyze_house_keeper.draw(screen, pop_up_coordinates[0] + (392 // 2), pop_up_coordinates[1] - (464 // 2)) # drawing
+    analyze_enemy.draw(screen, pop_up_coordinates[0] + 270, pop_up_coordinates[1] - 300) # drawing
+
+def draw_analyze_frog():
+    global surf, analyze_frog, screen
+    OPACITY = 180
+    overlay = pygame.Surface((screen_width, screen_height))
+    overlay.set_alpha(OPACITY)
+    overlay.fill(Constants.BLACK)
+    screen.blit(overlay, (0, 0))
+    surf = pygame.transform.flip(assets.corner_img, True, True)
+    screen.blit(surf, (0, 0))
+    #pop_up_coordinates = (screen_width // 2 - (assets.housekeeper_analyze_img.get_rect().width // 2), screen_height // 2 - (assets.mushroom_analyze_img.get_rect().height // 2))
+    pop_up_coordinates = (270,50)
+    screen.blit(assets.frog_analyze_img, pop_up_coordinates)
+    analyze_frog.update_animation()
+    #analyze_house_keeper.draw(screen, pop_up_coordinates[0] + (392 // 2), pop_up_coordinates[1] - (464 // 2)) # drawing
+    analyze_frog.draw(screen, pop_up_coordinates[0] + 270, pop_up_coordinates[1] - 300) # drawing
+
+def draw_analyze_mushroom():
+    global surf, analyze_mushroom, screen
+    OPACITY = 180
+    overlay = pygame.Surface((screen_width, screen_height))
+    overlay.set_alpha(OPACITY)
+    overlay.fill(Constants.BLACK)
+    screen.blit(overlay, (0, 0))
+    surf = pygame.transform.flip(assets.corner_img, True, True)
+    screen.blit(surf, (0, 0))
+    #pop_up_coordinates = (screen_width // 2 - (assets.housekeeper_analyze_img.get_rect().width // 2), screen_height // 2 - (assets.mushroom_analyze_img.get_rect().height // 2))
+    pop_up_coordinates = (270,50)
+    screen.blit(assets.mushroom_analyze_img, pop_up_coordinates)
+    analyze_mushroom.update_animation()
+    #analyze_house_keeper.draw(screen, pop_up_coordinates[0] + (392 // 2), pop_up_coordinates[1] - (464 // 2)) # drawing
+    analyze_mushroom.draw(screen, pop_up_coordinates[0] + 270, pop_up_coordinates[1] - 300) # drawing
+
+def draw_analyze_flower():
+    global surf, analyze_flower, screen
+    OPACITY = 180
+    overlay = pygame.Surface((screen_width, screen_height))
+    overlay.set_alpha(OPACITY)
+    overlay.fill(Constants.BLACK)
+    screen.blit(overlay, (0, 0))
+    surf = pygame.transform.flip(assets.corner_img, True, True)
+    screen.blit(surf, (0, 0))
+    #pop_up_coordinates = (screen_width // 2 - (assets.housekeeper_analyze_img.get_rect().width // 2), screen_height // 2 - (assets.mushroom_analyze_img.get_rect().height // 2))
+    pop_up_coordinates = (270,50)
+    screen.blit(assets.flower_analyze_img, pop_up_coordinates)
+    analyze_flower.update_animation()
+    #analyze_house_keeper.draw(screen, pop_up_coordinates[0] + (392 // 2), pop_up_coordinates[1] - (464 // 2)) # drawing
+    analyze_flower.draw(screen, pop_up_coordinates[0] + 270, pop_up_coordinates[1] - 300) # drawing
+
+def draw_analyze_shrub():
+    global surf, analyze_shrub, screen
+    OPACITY = 180
+    overlay = pygame.Surface((screen_width, screen_height))
+    overlay.set_alpha(OPACITY)
+    overlay.fill(Constants.BLACK)
+    screen.blit(overlay, (0, 0))
+    surf = pygame.transform.flip(assets.corner_img, True, True)
+    screen.blit(surf, (0, 0))
+    #pop_up_coordinates = (screen_width // 2 - (assets.housekeeper_analyze_img.get_rect().width // 2), screen_height // 2 - (assets.mushroom_analyze_img.get_rect().height // 2))
+    pop_up_coordinates = (270,50)
+    screen.blit(assets.shrub_analyze_img, pop_up_coordinates)
+    analyze_shrub.update_animation()
+    #analyze_house_keeper.draw(screen, pop_up_coordinates[0] + (392 // 2), pop_up_coordinates[1] - (464 // 2)) # drawing
+    analyze_shrub.draw(screen, pop_up_coordinates[0] + 270, pop_up_coordinates[1] - 300) # drawing
+
+def draw_analyze_small_tree():
+    global surf, analyze_small_tree, screen
+    OPACITY = 180
+    overlay = pygame.Surface((screen_width, screen_height))
+    overlay.set_alpha(OPACITY)
+    overlay.fill(Constants.BLACK)
+    screen.blit(overlay, (0, 0))
+    surf = pygame.transform.flip(assets.corner_img, True, True)
+    screen.blit(surf, (0, 0))
+    #pop_up_coordinates = (screen_width // 2 - (assets.housekeeper_analyze_img.get_rect().width // 2), screen_height // 2 - (assets.mushroom_analyze_img.get_rect().height // 2))
+    pop_up_coordinates = (270,50)
+    screen.blit(assets.small_tree_analyze_img, pop_up_coordinates)
+    analyze_small_tree.update_animation()
+    #analyze_house_keeper.draw(screen, pop_up_coordinates[0] + (392 // 2), pop_up_coordinates[1] - (464 // 2)) # drawing
+    analyze_small_tree.draw(screen, pop_up_coordinates[0] + 270, pop_up_coordinates[1] - 300) # drawing
+
+def draw_analyze_tree():
+    global surf, analyze_tree, screen
+    OPACITY = 180
+    overlay = pygame.Surface((screen_width, screen_height))
+    overlay.set_alpha(OPACITY)
+    overlay.fill(Constants.BLACK)
+    screen.blit(overlay, (0, 0))
+    surf = pygame.transform.flip(assets.corner_img, True, True)
+    screen.blit(surf, (0, 0))
+    #pop_up_coordinates = (screen_width // 2 - (assets.housekeeper_analyze_img.get_rect().width // 2), screen_height // 2 - (assets.mushroom_analyze_img.get_rect().height // 2))
+    pop_up_coordinates = (270,50)
+    screen.blit(assets.tree_analyze_img, pop_up_coordinates)
+    analyze_tree.update_animation()
+    #analyze_house_keeper.draw(screen, pop_up_coordinates[0] + (392 // 2), pop_up_coordinates[1] - (464 // 2)) # drawing
+    analyze_tree.draw(screen, pop_up_coordinates[0] + 270, pop_up_coordinates[1] - 300) # drawing
 
 while running:
     for event in pygame.event.get():
@@ -404,10 +555,46 @@ while running:
                         print("FROG")
                     elif re.match(housekeeper_talk_command_pattern, text_input):
                         housekeeper.talk(start_tkinter_app,wrong_command)
+                    # ANALYZE
                     elif re.match(analyze_housekeeper_command_pattern, text_input):
                         if housekeeper.is_colliding:
                             show_overlay = True
                             analyzing_house_keeper = True
+                    elif re.match(analyze_enemy_command_pattern, text_input):
+                        if enemy.is_colliding:
+                            show_overlay = True
+                            analyzing_enemy = True
+                    elif re.match(analyze_frog_command_pattern, text_input):
+                        for key, frog in frogs.items():
+                            if frog.is_colliding:
+                                show_overlay = True
+                                analyzing_frog = True
+                    elif re.match(analyze_mushroom_command_pattern, text_input):
+                        for key, mushroom in mushroom_plants.items():
+                            if mushroom.is_colliding:
+                                show_overlay = True
+                                analyzing_mushroom = True
+                    elif re.match(analyze_flower_command_pattern, text_input):
+                        for key, flower in flowers.items():
+                            if flower.is_colliding:
+                                show_overlay = True
+                                analyzing_flower = True
+                    elif re.match(analyze_shrub_command_pattern, text_input):
+                        for key, shrub in shrubs.items():
+                            if shrub.is_colliding:
+                                show_overlay = True
+                                analyzing_shrub = True
+                    elif re.match(analyze_small_tree_command_pattern, text_input):
+                        for key, frog in small_tree.items():
+                            if small_tree.is_colliding:
+                                show_overlay = True
+                                analyzing_small_tree = True
+                    elif re.match(analyze_tree_command_pattern, text_input):
+                        for key, tree in tree.items():
+                            if tree.is_colliding:
+                                show_overlay = True
+                                analyzing_tree = True
+
                     else:
                         print("wrong_code")
                         player.wrong_command()
@@ -420,7 +607,7 @@ while running:
         # Pause Pygame loop if Tkinter app is running or if text area is visible
         if pygame_paused or text_area_visible:
             if text_area_visible:
-                screen.blit(assets.code_console_bg, (10, screen_height - 400))
+                screen.blit(assets.code_console_bg, (120, screen_height - 470))
                 text_surface = font.render(text_input, True, Constants.BLACK)
                 screen.blit(text_surface, (text_area_rect.x + 5, text_area_rect.y + 5))
                 pygame.display.flip()
@@ -531,6 +718,20 @@ while running:
         if show_overlay:
             if analyzing_house_keeper:
                 draw_analyze_house_keeper()
+            if analyzing_enemy:
+                draw_analyze_enemy()
+            if analyzing_frog:
+                draw_analyze_frog()
+            if analyzing_mushroom:
+                draw_analyze_mushroom()
+            if analyzing_flower:
+                draw_analyze_flower()
+            if analyzing_shrub:
+                draw_analyze_shrub()
+            if analyzing_small_tree:
+                draw_analyze_small_tree()
+            if analyzing_tree:
+                draw_analyze_tree()
 
         # UI
         surf = pygame.transform.flip(assets.corner_img, False, True)

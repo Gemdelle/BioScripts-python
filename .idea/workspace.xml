@@ -5,7 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="dialogue-images.">
+      <change afterPath="$PROJECT_DIR$/core/analyze_character_enemy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/analyze_character_flower.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/analyze_character_frog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/analyze_character_shrub.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/analyze_mushroom.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/analyze_small_tree.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/analyze_tree.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/gifs/frames/caterpillar-only-dialogue-grey/caterpillar-only-dialogue-grey_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/gifs/frames/caterpillar-only-dialogue-grey/caterpillar-only-dialogue-grey_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/analyze_character_housekeeper.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/analyze_character_housekeeper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/flower_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/flower_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/flower_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/flower_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/frog_angry.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/frog_angry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/frog_happy.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/frog_happy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/frog_neutral_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/frog_neutral_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/frog_neutral_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/frog_neutral_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/hole_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/hole_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/hole_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/hole_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/hole_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/hole_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/hole_4.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/hole_4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/house_keeper.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/house_keeper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/mushroom_plant.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/mushroom_plant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/red_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/red_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/shrub_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/shrub_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/shrub_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/shrub_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/small_tree_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/small_tree_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/small_tree_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/small_tree_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets_preloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/assets_preloader.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,26 +72,26 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.constants.executor&quot;: &quot;Run&quot;,
-    &quot;Python.frames_generator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.game.executor&quot;: &quot;Run&quot;,
-    &quot;Python.map_reference.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Gemdelle/Downloads/BioScripts/BioScripts-python&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Python&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.constants.executor": "Run",
+    "Python.frames_generator.executor": "Run",
+    "Python.game.executor": "Run",
+    "Python.map_reference.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Gemdelle/Downloads/BioScripts/BioScripts-python/core",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Python"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gemdelle\Downloads\BioScripts\BioScripts-python\core" />
       <recent name="C:\Dev\BioScripts-python\assets\images" />
       <recent name="C:\Dev\BioScripts-python\assets\gifs\father" />
       <recent name="C:\Dev\BioScripts-python\ui\tkinter" />
       <recent name="C:\Dev\BioScripts-python\core" />
-      <recent name="C:\Dev\BioScripts-python\assets\gifs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Dev\BioScripts-python\ui\tkinter" />
@@ -254,7 +283,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719882492578</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="dialogue-images.">
+      <option name="closed" value="true" />
+      <created>1719889167830</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1719889167830</updated>
+    </task>
+    <task id="LOCAL-00023" summary="dialogue-images.">
+      <option name="closed" value="true" />
+      <created>1719889581911</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1719889581911</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

@@ -2,7 +2,7 @@ import os
 import pygame
 from utils.constants import Constants
 
-class AnalyzeCharacterHousekeeper:
+class AnalyzeCharacterEnemy:
     def __init__(self):
         self.frames = {}
         self.frame_index = 0
@@ -12,7 +12,7 @@ class AnalyzeCharacterHousekeeper:
 
     def load_frame(self, index):
         if index not in self.frames:
-            frame_path = os.path.join("./assets/gifs/frames/analysis-housekeeper-final", f'analysis-housekeeper-final_{index}.png')
+            frame_path = os.path.join("./assets/gifs/frames/analysis-enemy-final", f'analysis-enemy-final_{index}.png')
             if os.path.exists(frame_path):
                 surf = pygame.image.load(frame_path).convert_alpha()
                 surf = pygame.transform.scale(surf, (500, 600)) # scale

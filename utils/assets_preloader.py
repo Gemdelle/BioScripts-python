@@ -95,9 +95,24 @@ class AssetsPreloader:
         self.player_img_reference = pygame.transform.scale(self.player_img_reference, (Constants.PLAYER_SIZE, Constants.PLAYER_SIZE))
 
         # Analyze
-
+        self.enemy_analyze_img = pygame.image.load(resource_path("assets\\images\\pop-up-enemy.png")).convert_alpha()
+        self.flower_analyze_img = pygame.image.load(resource_path("assets\\images\\pop-up-flower.png")).convert_alpha()
+        self.frog_analyze_img = pygame.image.load(resource_path("assets\\images\\pop-up-frog.png")).convert_alpha()
+        self.housekeeper_analyze_img = pygame.image.load(resource_path("assets\\images\\pop-up-housekeeper.png")).convert_alpha()
         self.mushroom_analyze_img = pygame.image.load(resource_path("assets\\images\\pop-up-mushroom.png")).convert_alpha()
-        self.mushroom_analyze_img = pygame.transform.scale(self.mushroom_analyze_img, (1056, 736))
+        self.shrub_analyze_img = pygame.image.load(resource_path("assets\\images\\pop-up-shrub.png")).convert_alpha()
+        self.small_tree_analyze_img = pygame.image.load(resource_path("assets\\images\\pop-up-small-tree.png")).convert_alpha()
+        self.tree_analyze_img = pygame.image.load(resource_path("assets\\images\\pop-up-tree.png")).convert_alpha()
+
+        self.enemy_analyze_img = pygame.transform.scale(self.enemy_analyze_img, (1256, 936))
+        self.flower_analyze_img = pygame.transform.scale(self.flower_analyze_img, (1256, 936))
+        self.frog_analyze_img = pygame.transform.scale(self.frog_analyze_img, (1256, 936))
+        self.housekeeper_analyze_img = pygame.transform.scale(self.housekeeper_analyze_img, (1256, 936))
+        self.mushroom_analyze_img = pygame.transform.scale(self.mushroom_analyze_img, (1256, 936))
+        self.shrub_analyze_img = pygame.transform.scale(self.shrub_analyze_img, (1256, 936))
+        self.small_tree_analyze_img = pygame.transform.scale(self.small_tree_analyze_img, (1256, 936))
+        self.tree_analyze_img = pygame.transform.scale(self.tree_analyze_img, (1256, 936))
+        #self.tree_analyze_img = pygame.transform.scale(self.tree_analyze_img, (1056, 736))
 
         self.generate_caterpillar_walk_frames()
         self._assets_preloaded = True

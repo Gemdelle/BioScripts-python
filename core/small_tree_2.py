@@ -10,6 +10,7 @@ class SmallTree2:
         self.is_colliding = False
         self.tooltip_text = "small tree"
         self.current_text_length = 0
+        self.current_text_length = 0
         self.last_update_time = 0
         self.typing_speed = 100  # Time in milliseconds between each character
         self.visible = False
@@ -71,7 +72,8 @@ class SmallTree2:
                 screen.blit(self.frames[self.frame_index], (self.rect.x, self.rect.y))
             if self.is_colliding:
                 # Render tooltip
-                font = pygame.font.Font(None, 24)  # You can specify a font file instead of None
+                font_path = os.path.join("assets", "fonts", "BavarianCrown.ttf")
+                font = pygame.font.Font(font_path, 24)
                 text_to_display = self.tooltip_text[:self.current_text_length]
                 text_surf = font.render(text_to_display, True, Constants.WHITE)
                 text_rect = text_surf.get_rect(center=(self.rect.centerx, self.rect.top - 10))

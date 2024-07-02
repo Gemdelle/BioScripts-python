@@ -42,7 +42,8 @@ class Hole4:
 
         if self.is_colliding:
             # Render tooltip
-            font = pygame.font.Font(None, 24)  # You can specify a font file instead of None
+            font_path = os.path.join("assets", "fonts", "BavarianCrown.ttf")
+            font = pygame.font.Font(font_path, 24)
             text_to_display = self.tooltip_text[:self.current_text_length]
             text_surf = font.render(text_to_display, True, Constants.WHITE)
             text_rect = text_surf.get_rect(center=(self.rect.centerx, self.rect.top - 10))
