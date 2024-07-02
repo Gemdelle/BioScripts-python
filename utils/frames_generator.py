@@ -3,7 +3,7 @@ import os
 import imageio
 
 # insert gif name here
-gif_name = "enemy-only-dialogue"
+gif_name = "caterpillar-only-dialogue-grey"
 gif_path = f"../assets/gifs/{gif_name}.gif"
 frames_folder = f"../assets/gifs/frames/{gif_name}"
 
