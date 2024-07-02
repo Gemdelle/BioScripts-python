@@ -71,7 +71,7 @@ screen_height = info.current_h
 
 # Set up the window to occupy the maximum resolution without full screen
 screen = pygame.display.set_mode((screen_width, screen_height))
-screen_selected = Screens.GAME_SCREEN_MEET_HOUSEKEEPER
+screen_selected = Screens.SPLASH
 pygame.display.set_caption("BioScripts")
 clock = pygame.time.Clock()
 
