@@ -139,10 +139,11 @@ class FatherGame:
         father_coords = self.find_object_position_by_id(self.objects['father'])
         for key, value in self.objects.items():
             if self.objects['father'] != value:
+                value_coords = self.find_object_position_by_id(value)
                 if self.objects['food'] == value:
-                    self.has_win = True
+                    if father_coords[0] == value_coords[0] and father_coords[1] == value_coords[1]:
+                        self.has_win = True
                 else:
-                    value_coords = self.find_object_position_by_id(value)
                     if father_coords[0] == value_coords[0] and father_coords[1] == value_coords[1]:
                         self.has_lost = True
                         self.has_win = False
