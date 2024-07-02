@@ -12,7 +12,7 @@ class AnalyzeShrub:
 
     def load_frame(self, index):
         if index not in self.frames:
-            frame_path = os.path.join("./assets/gifs/frames/shrub-1", f'shrub-1_{index}.png')
+            frame_path = os.path.join("./assets/gifs/frames/shrub-2", f'shrub-2_{index}.png')
             if os.path.exists(frame_path):
                 surf = pygame.image.load(frame_path).convert_alpha()
                 surf = pygame.transform.scale(surf, (500, 600)) # scale
@@ -22,7 +22,7 @@ class AnalyzeShrub:
 
     def update_animation(self):
         current_time = pygame.time.get_ticks()
-        self.frame_index = (current_time // Constants.FRAME_DURATION_IN_MILLIS) % 680  # Assuming 200 frames
+        self.frame_index = (current_time // Constants.FRAME_DURATION_IN_MILLIS) % 200  # Assuming 200 frames
         self.load_frame(self.frame_index)  # Lazy load the current frame
 
     def draw(self, screen, x, y):

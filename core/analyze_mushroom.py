@@ -22,7 +22,7 @@ class AnalyzeMushroom:
 
     def update_animation(self):
         current_time = pygame.time.get_ticks()
-        self.frame_index = (current_time // Constants.FRAME_DURATION_IN_MILLIS) % 680  # Assuming 200 frames
+        self.frame_index = (current_time // Constants.FRAME_DURATION_IN_MILLIS) % 25  # Assuming 200 frames
         self.load_frame(self.frame_index)  # Lazy load the current frame
 
     def draw(self, screen, x, y):
