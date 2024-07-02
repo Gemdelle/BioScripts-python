@@ -15,7 +15,8 @@ class HousekeeperDialog:
             frame_path = os.path.join("./assets/gifs/frames/housekeeper-only-dialogue", f'housekeeper-only-dialogue_{index}.png')
             if os.path.exists(frame_path):
                 surf = pygame.image.load(frame_path).convert_alpha()
-                surf = pygame.transform.scale(surf, (500, 600)) # scale
+                surf = pygame.transform.flip(surf, True, False)
+                surf = pygame.transform.scale(surf, (500, 400)) # scale
                 self.frames[index] = surf
             else:
                 self.frames[index] = None  # Mark as None if the frame does not exist
@@ -26,8 +27,8 @@ class HousekeeperDialog:
         self.load_frame(self.frame_index)  # Lazy load the current frame
 
     def draw(self, screen, x, y):
-        self.rect.x = x + 392
-        self.rect.y = y + 464
+        self.rect.x = x + 200
+        self.rect.y = y + 100
         if self.frames[self.frame_index] is not None:
             screen.blit(self.frames[self.frame_index], (self.rect.x, self.rect.y))
 

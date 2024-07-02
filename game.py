@@ -18,7 +18,11 @@ from core.analyze_mushroom import AnalyzeMushroom
 from core.analyze_small_tree import AnalyzeSmallTree
 from core.analyze_tree import AnalyzeTree
 from core.blue_tree import BlueTree
+from core.caterpillar_dialog import CaterpillarDialog
+from core.caterpillar_dialog_grey import CaterpillarDialogGrey
 from core.disease_bar import AnalyzeDiseaseBar
+from core.enemy_dialog import EnemyDialog
+from core.enemy_dialog_grey import EnemyDialogGrey
 from core.flower_1 import Flower1
 from core.flower_2 import Flower2
 from core.frog_angry import FrogAngry
@@ -28,6 +32,8 @@ from core.hole_1 import Hole1
 from core.hole_2 import Hole2
 from core.hole_3 import Hole3
 from core.hole_4 import Hole4
+from core.house_keeper_dialog import HousekeeperDialog
+from core.house_keeper_dialog_grey import HousekeeperDialogGrey
 from core.mushroom_plant import MushroomPlant
 from core.red_tree import RedTree
 from core.shrub_1 import Shrub1
@@ -142,6 +148,15 @@ analyze_tree = AnalyzeTree()
 analyzing_tree = False
 
 disease_bar = AnalyzeDiseaseBar()
+
+housekeeper_dialog = HousekeeperDialog()
+housekeeper_dialog_grey = HousekeeperDialogGrey()
+
+enemy_dialog = EnemyDialog()
+enemy_dialog_grey = EnemyDialogGrey()
+
+caterpillar_dialog = CaterpillarDialog()
+caterpillar_dialog_grey = CaterpillarDialogGrey()
 
 def print_memory_usage():
     process = psutil.Process(os.getpid())
@@ -282,12 +297,8 @@ def on_successful_harvest(fruit):
 running = True
 
 show_overlay_analyze = False
-show_overlay_dialog_1_3 = False
-show_overlay_dialog_4_5 = False
-show_overlay_dialog_6_8 = False
-show_overlay_dialog_9_11 = False
-show_overlay_dialog_12_13 = False
-dialog_progression = 1
+show_overlay_dialog = False
+dialog_progression = 0
 def draw_item_container_1():
     base = 395
     screen.blit(assets.item_container_img, (base, 190))
@@ -523,11 +534,139 @@ def draw_analyze_disease_bar():
     disease_bar.draw(screen, pop_up_coordinates[0] - 300, pop_up_coordinates[1] + 230) # drawing
 
 def show_dialog_1():
-
     dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-1.png")).convert_alpha()
     dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
     screen.blit(dialog_img, (0,0))
+    housekeeper_dialog.update_animation()
+    housekeeper_dialog.draw(screen,  0, 0)  # drawing
 
+    caterpillar_dialog_grey.update_animation()
+    caterpillar_dialog_grey.draw(screen, 900, 0)  # drawing
+
+def show_dialog_2():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-2.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    housekeeper_dialog_grey.update_animation()
+    housekeeper_dialog_grey.draw(screen,  0, 0)  # drawing
+
+    caterpillar_dialog.update_animation()
+    caterpillar_dialog.draw(screen, 900, 0)  # drawing
+
+def show_dialog_3():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-3.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    housekeeper_dialog.update_animation()
+    housekeeper_dialog.draw(screen, 0, 0)  # drawing
+
+    caterpillar_dialog_grey.update_animation()
+    caterpillar_dialog_grey.draw(screen, 900, 0)  # drawing
+
+def show_dialog_4():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-4.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    housekeeper_dialog.update_animation()
+    housekeeper_dialog.draw(screen, 0, 0)  # drawing
+
+    caterpillar_dialog_grey.update_animation()
+    caterpillar_dialog_grey.draw(screen, 900, 0)  # drawing
+
+def show_dialog_5():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-5.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    housekeeper_dialog_grey.update_animation()
+    housekeeper_dialog_grey.draw(screen, 0, 0)  # drawing
+
+    caterpillar_dialog.update_animation()
+    caterpillar_dialog.draw(screen, 900, 0)  # drawing
+
+def show_dialog_6():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-6.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    enemy_dialog.update_animation()
+    enemy_dialog.draw(screen, 0, 0)  # drawing
+
+    caterpillar_dialog_grey.update_animation()
+    caterpillar_dialog_grey.draw(screen, 900, 0)  # drawing
+
+def show_dialog_7():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-7.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    enemy_dialog_grey.update_animation()
+    enemy_dialog_grey.draw(screen, 0, 0)  # drawing
+
+    caterpillar_dialog.update_animation()
+    caterpillar_dialog.draw(screen, 900, 0)  # drawing
+
+def show_dialog_8():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-8.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    enemy_dialog.update_animation()
+    enemy_dialog.draw(screen, 0, 0)  # drawing
+
+    caterpillar_dialog_grey.update_animation()
+    caterpillar_dialog_grey.draw(screen, 900, 0)  # drawing
+
+def show_dialog_9():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-9.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    housekeeper_dialog.update_animation()
+    housekeeper_dialog.draw(screen, 0, 0)  # drawing
+
+    caterpillar_dialog_grey.update_animation()
+    caterpillar_dialog_grey.draw(screen, 900, 0)  # drawing
+
+def show_dialog_10():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-10.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    housekeeper_dialog_grey.update_animation()
+    housekeeper_dialog_grey.draw(screen, 0, 0)  # drawing
+
+    caterpillar_dialog.update_animation()
+    caterpillar_dialog.draw(screen, 900, 0)  # drawing
+
+def show_dialog_11():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-11.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    housekeeper_dialog.update_animation()
+    housekeeper_dialog.draw(screen, 0, 0)  # drawing
+
+    caterpillar_dialog_grey.update_animation()
+    caterpillar_dialog_grey.draw(screen, 900, 0)  # drawing
+
+def show_dialog_12():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-12.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    enemy_dialog_grey.update_animation()
+    enemy_dialog_grey.draw(screen, 0, 0)  # drawing
+
+    caterpillar_dialog.update_animation()
+    caterpillar_dialog.draw(screen, 900, 0)  # drawing
+
+def show_dialog_13():
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-13.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+    enemy_dialog.update_animation()
+    enemy_dialog.draw(screen, 0, 0)  # drawing
+
+    caterpillar_dialog_grey.update_animation()
+    caterpillar_dialog_grey.draw(screen, 900, 0)  # drawing
+
+def show_current_dialog():
+    global show_overlay_dialog, dialog_progression
+    dialog_progression += 1
+    show_overlay_dialog = True
 
 while running:
     for event in pygame.event.get():
@@ -545,11 +684,21 @@ while running:
                 analyzing_shrub = False
                 analyzing_small_tree = False
                 analyzing_tree = False
-                show_overlay_dialog_1_3 = False
-                show_overlay_dialog_4_5 = False
-                show_overlay_dialog_6_8 = False
-                show_overlay_dialog_9_11 = False
-                show_overlay_dialog_12_13 = False
+        elif event.type == MOUSEBUTTONDOWN and show_overlay_dialog:
+            mouse_x, mouse_y = event.pos
+            if 0 <= mouse_x <= screen_width and 0 <= mouse_y <= screen_height:
+                if 1 <= dialog_progression <= 2:
+                    dialog_progression += 1
+                elif dialog_progression == 4:
+                    dialog_progression += 1
+                elif 6 <= dialog_progression <= 7:
+                    dialog_progression += 1
+                elif 9 <= dialog_progression <= 10:
+                    dialog_progression += 1
+                elif  dialog_progression == 12:
+                    dialog_progression += 1
+                else:
+                    show_overlay_dialog = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_c:
                 text_area_visible = not text_area_visible
@@ -559,7 +708,7 @@ while running:
                     text_input = text_input[:-1]
                 elif event.key == pygame.K_RETURN:
                     if re.match(enemy_talk_command_pattern, text_input):
-                        enemy.talk(start_tkinter_app,wrong_command)
+                        enemy.talk(show_current_dialog,wrong_command)
                     elif re.match(harvest_mushroom_command_pattern, text_input):
                         for key, plant in mushroom_plants.items():
                             if plant.is_colliding:
@@ -587,7 +736,7 @@ while running:
                     elif re.match(frog_talk_command_pattern, text_input):
                         print("FROG")
                     elif re.match(housekeeper_talk_command_pattern, text_input):
-                        housekeeper.talk(start_tkinter_app,wrong_command)
+                        housekeeper.talk(show_current_dialog,wrong_command)
                     # ANALYZE
                     elif re.match(analyze_housekeeper_command_pattern, text_input):
                         if housekeeper.is_colliding:
@@ -748,6 +897,15 @@ while running:
         draw_item_container_5()
         draw_item_container_6()
 
+        # UI
+        surf = pygame.transform.flip(assets.corner_img, False, True)
+        screen.blit(surf, (screen_width-surf.get_rect().width,0))
+
+        screen.blit(assets.corner_img, (screen_width-surf.get_rect().width,screen_height-surf.get_rect().height))
+
+        surf2 = pygame.transform.flip(assets.corner_img, True, False)
+        screen.blit(surf2, (0,screen_height-surf2.get_rect().height))
+
         if show_overlay_analyze:
             if analyzing_house_keeper:
                 draw_analyze_house_keeper()
@@ -773,23 +931,33 @@ while running:
             if analyzing_tree:
                 draw_analyze_tree()
                 draw_analyze_disease_bar()
-        elif show_overlay_dialog_1_3:
+        elif show_overlay_dialog:
             if dialog_progression == 1:
                 show_dialog_1()
-                show_dialog_1()
-        # show_overlay_dialog_4_5 = False
-        # show_overlay_dialog_6_8 = False
-        # show_overlay_dialog_9_11 = False
-        # show_overlay_dialog_12_13 = False
-
-        # UI
-        surf = pygame.transform.flip(assets.corner_img, False, True)
-        screen.blit(surf, (screen_width-surf.get_rect().width,0))
-
-        screen.blit(assets.corner_img, (screen_width-surf.get_rect().width,screen_height-surf.get_rect().height))
-
-        surf2 = pygame.transform.flip(assets.corner_img, True, False)
-        screen.blit(surf2, (0,screen_height-surf2.get_rect().height))
+            elif dialog_progression == 2:
+                show_dialog_2()
+            elif dialog_progression == 3:
+                show_dialog_3()
+            elif dialog_progression == 4:
+                show_dialog_4()
+            elif dialog_progression == 5:
+                show_dialog_5()
+            elif dialog_progression == 6:
+                show_dialog_6()
+            elif dialog_progression == 7:
+                show_dialog_7()
+            elif dialog_progression == 8:
+                show_dialog_8()
+            elif dialog_progression == 9:
+                show_dialog_9()
+            elif dialog_progression == 10:
+                show_dialog_10()
+            elif dialog_progression == 11:
+                show_dialog_11()
+            elif dialog_progression == 12:
+                show_dialog_12()
+            elif dialog_progression == 13:
+                show_dialog_13()
 
     elif screen_selected == Screens.SPLASH:
         splash_video.play_video(screen, go_to_father_screen())
