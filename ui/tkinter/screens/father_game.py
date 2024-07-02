@@ -4,14 +4,19 @@ from tkinter import scrolledtext
 
 from PIL import Image, ImageTk
 
-from ui.tkinter.components.gif_image import AnimatedGIF
-from ui.tkinter.screens.tile_map import TileMap
+from utils.constants import Constants
 from utils.resource_path_util import resource_path
 from utils.set_time_out_manager import SetTimeoutManager
 
 class FatherGame:
     def __init__(self, root, go_next_validation):
-        setTimeoutManager = SetTimeoutManager()
+        self.move_commands = {
+                    "MoveEast": lambda: self.move_right(self.objects['object4']),
+                    "MoveWest": lambda: self.move_left(self.objects['object4']),
+                    "MoveNorth": lambda: self.move_up(self.objects['object4']),
+                    "MoveSouth": lambda: self.move_down(self.objects['object4'])
+                }
+        self.setTimeoutManager = SetTimeoutManager()
         self.root = root
         screen_width = root.winfo_screenwidth()
         screen_height = root.winfo_screenheight()
@@ -34,6 +39,7 @@ class FatherGame:
 
         # Input text area
         self.input_text = scrolledtext.ScrolledText(self.root, width=50, height=30, bg='#fefbe6', borderwidth=0, highlightthickness=0, wrap=tk.NONE)
+        self.input_text.insert(tk.END, Constants.INITIAL_FATHER_GAME_TEXT)
         self.input_text.config(xscrollcommand=None, yscrollcommand=None)  # Disable both horizontal and vertical scrollbars
         self.canvas.create_window(200, 220, anchor='nw', window=self.input_text)
 
@@ -55,40 +61,83 @@ class FatherGame:
         self.output_text = scrolledtext.ScrolledText(self.root, width=44, height=6, bg='#fefbe6', borderwidth=0, highlightthickness=0, wrap=tk.NONE)
         self.canvas.create_window(210, 875, anchor='nw', window=self.output_text)
 
-        self.tile_map = TileMap(self.root)
-        self.tile_map.pack()
-        setTimeoutManager.setTimeout(lambda: self.move1(), 2)
+        # TileMap related
+        self.tile_size = 170
+        self.grid_size = 5
+        tile_map_offset = 150
+        self.tile_map = tk.Canvas(self.canvas, width=self.tile_size * self.grid_size, height=self.tile_size * self.grid_size)
+        self.canvas.create_window(screen_width - (self.tile_size * self.grid_size) - tile_map_offset, screen_height - (self.tile_size * self.grid_size) - tile_map_offset, anchor='nw', window=self.tile_map)
+        self.draw_grid()
+        self.create_objects()
+        self.setTimeoutManager.setTimeout(lambda: self.move1(), 2)
+
+    def draw_grid(self):
+        for i in range(self.grid_size):
+            for j in range(self.grid_size):
+                x1 = j * self.tile_size
+                y1 = i * self.tile_size
+                x2 = x1 + self.tile_size
+                y2 = y1 + self.tile_size
+                self.tile_map.create_rectangle(x1, y1, x2, y2, outline='black')
+
+    def create_objects(self):
+        self.objects = {}
+        self.objects['animal_photo'] = self.tile_map.create_rectangle(
+            self.get_centered_coords(0, 3, offset=self.tile_size // 2), fill='black')
+        self.objects['object1'] = self.tile_map.create_oval(
+            self.get_centered_coords(1, 0, offset=self.tile_size // 4), fill='green')
+        self.objects['object2'] = self.tile_map.create_oval(
+            self.get_centered_coords(2, 2, offset=self.tile_size // 4), fill='green')
+        self.objects['object3'] = self.tile_map.create_oval(
+            self.get_centered_coords(3, 1, offset=self.tile_size // 4), fill='green')
+        self.objects['object4'] = self.tile_map.create_oval(
+            self.get_centered_coords(3, 3, offset=self.tile_size // 4), fill='yellow')
+
+    def get_centered_coords(self, x, y, offset):
+        x1 = x * self.tile_size + offset
+        y1 = y * self.tile_size + offset
+        x2 = x1 + self.tile_size - 2 * offset
+        y2 = y1 + self.tile_size - 2 * offset
+        return x1, y1, x2, y2
+
+    def move_right(self, obj_id):
+        self.tile_map.move(obj_id, self.tile_size, 0)
+
+    def move_left(self, obj_id):
+        self.tile_map.move(obj_id, -self.tile_size, 0)
+
+    def move_up(self, obj_id):
+        self.tile_map.move(obj_id, 0, -self.tile_size)
+
+    def move_down(self, obj_id):
+        self.tile_map.move(obj_id, 0, self.tile_size)
 
     def move1(self):
-        setTimeoutManager = SetTimeoutManager()
-        self.tile_map.move_left(self.tile_map.objects['object4'])
-        setTimeoutManager.setTimeout(lambda: self.move2(), 1)
+        self.move_left(self.objects['object4'])
+        self.setTimeoutManager.setTimeout(lambda: self.move2(), 1)
+
     def move2(self):
-        setTimeoutManager = SetTimeoutManager()
-        self.tile_map.move_down(self.tile_map.objects['object4'])
-        setTimeoutManager.setTimeout(lambda: self.move3(), 1)
+        self.move_down(self.objects['object4'])
+        self.setTimeoutManager.setTimeout(lambda: self.move3(), 1)
+
     def move3(self):
-        setTimeoutManager = SetTimeoutManager()
-        self.tile_map.move_left(self.tile_map.objects['object4'])
-        setTimeoutManager.setTimeout(lambda: self.move4(), 1)
+        self.move_left(self.objects['object4'])
+        self.setTimeoutManager.setTimeout(lambda: self.move4(), 1)
+
     def move4(self):
-        self.tile_map.move_up(self.tile_map.objects['object4'])
+        self.move_up(self.objects['object4'])
+
     def scroll_text(self, event):
         if event.keysym == "Up":
             self.input_text.yview_scroll(-1, "units")
         elif event.keysym == "Down":
             self.input_text.yview_scroll(1, "units")
 
-    def update_gif(self, new_gif_path, start_frame, end_frame):
-        self.animated_gif.destroy()
-        self.animated_gif = AnimatedGIF(self.canvas, new_gif_path, 740, 180, start_frame=start_frame, end_frame=end_frame)
-        self.animated_gif.start_animation()
 
     def get_input_text(self):
         return self.input_text.get("1.0", tk.END)
 
     def run_java_code(self, event):
-        setTimeoutManager = SetTimeoutManager()
         java_code = self.get_input_text()
 
         # Split the Java code into individual class definitions based on "//---"
@@ -102,12 +151,12 @@ class FatherGame:
                 class_name = self.extract_class_name(java_class)
 
                 # Write the Java file
-                with open(f"./validations/father_validation_3/{class_name}.java", "w") as file:
+                with open(f"./validations/father_game/{class_name}.java", "w") as file:
                     file.write(java_class)
 
                 # Compile the Java file
                 compile_process = subprocess.Popen(["javac", f"{class_name}.java"], stdout=subprocess.PIPE,
-                                                   stderr=subprocess.PIPE, cwd="./validations/father_validation_3")
+                                                   stderr=subprocess.PIPE, cwd="./validations/father_game")
                 compile_processes.append((class_name, compile_process))
 
         try:
@@ -122,33 +171,34 @@ class FatherGame:
 
             # If compilation successful, execute the main method of Main class if exists
             main_process = subprocess.Popen(
-                ["java", "MainFatherValidation1"],
+                ["java", "Main"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                cwd="./validations/father_validation_1"
+                cwd="./validations/father_game"
             )
             main_process.wait(timeout=15)
 
             # Display output of main execution
             if main_process.returncode == 0:
+                output = main_process.stdout.read().decode()
                 self.output_text.delete("1.0", tk.END)
-                self.output_text.insert(tk.END, "Execution successful.\n")
-                self.output_text.insert(tk.END, main_process.stdout.read().decode())
-                self.update_gif(resource_path("assets\\gifs\\father\\father_default_new_correct.gif"), start_frame=1, end_frame=169)
-                setTimeoutManager.setTimeout(lambda: self.update_gif(resource_path("assets\\gifs\\father\\father_default_correct.gif"), start_frame=1, end_frame=373), 2)
-                setTimeoutManager.setTimeout(lambda: self.go_next(), 4)
+                self.output_text.insert(tk.END, output)
+
+                commands = output.split("\r\n")
+                current_delay = 1
+                for command in commands:
+                    command = command.strip()
+                    if command in self.move_commands and command != "":
+                        self.setTimeoutManager.setTimeout(lambda cmd=command: self.move_commands[cmd](), current_delay)
+                        current_delay += 1
             else:
                 self.output_text.delete("1.0", tk.END)
                 self.output_text.insert(tk.END, "Error occurred during execution.\n")
                 self.output_text.insert(tk.END, main_process.stderr.read().decode())
-                self.update_gif(resource_path("assets\\gifs\\father\\father_default_new_incorrect.gif"), start_frame=1, end_frame=149)
-                setTimeoutManager.setTimeout(lambda: self.update_gif(resource_path("assets\\gifs\\father\\father_default_incorrect.gif"), start_frame=1, end_frame=373), 2)
 
         except subprocess.TimeoutExpired:
             self.output_text.delete("1.0", tk.END)
             self.output_text.insert(tk.END, "Timeout occurred during compilation or execution.\n")
-            self.update_gif(resource_path("assets\\gifs\\father\\father_default_new_incorrect.gif"), start_frame=1, end_frame=149)
-            setTimeoutManager.setTimeout(lambda: self.update_gif(resource_path("assets\\gifs\\father\\father_default_incorrect.gif"), start_frame=1, end_frame=373), 2)
 
     def go_next(self):
         self.canvas.destroy()
