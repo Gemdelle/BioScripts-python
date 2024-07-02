@@ -4,37 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="dialogue-images.">
-      <change afterPath="$PROJECT_DIR$/core/analyze_character_enemy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/analyze_character_flower.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/analyze_character_frog.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/analyze_character_shrub.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/analyze_mushroom.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/analyze_small_tree.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/analyze_tree.py" afterDir="false" />
+    <list default="true" id="d763f54e-c48e-4155-8a82-c923dc03ff02" name="Changes" comment="Agrega cosas nuevas.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/gifs/frames/caterpillar-only-dialogue-grey/caterpillar-only-dialogue-grey_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/gifs/frames/caterpillar-only-dialogue-grey/caterpillar-only-dialogue-grey_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/analyze_character_housekeeper.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/analyze_character_housekeeper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/flower_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/flower_1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/flower_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/flower_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/frog_angry.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/frog_angry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/frog_happy.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/frog_happy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/frog_neutral_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/frog_neutral_1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/frog_neutral_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/frog_neutral_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/hole_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/hole_1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/hole_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/hole_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/hole_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/hole_3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/hole_4.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/hole_4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/house_keeper.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/house_keeper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/mushroom_plant.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/mushroom_plant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/red_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/red_tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/shrub_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/shrub_1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/shrub_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/shrub_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/small_tree_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/small_tree_1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/small_tree_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/small_tree_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/assets_preloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/assets_preloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/tkinter/components/gif_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tkinter/components/gif_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/tkinter/father_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tkinter/father_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/tkinter/screens/father_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tkinter/screens/father_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validations/father_game/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/validations/father_game/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validations/father_game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/validations/father_game/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,22 +49,21 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.constants.executor": "Run",
-    "Python.frames_generator.executor": "Run",
-    "Python.game.executor": "Run",
-    "Python.map_reference.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Gemdelle/Downloads/BioScripts/BioScripts-python/core",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Python"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.frames_generator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.map_reference.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Dev/BioScripts-python/validations/solution&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Python&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Gemdelle\Downloads\BioScripts\BioScripts-python\core" />
+      <recent name="C:\Dev\BioScripts-python\validations\solution" />
       <recent name="C:\Dev\BioScripts-python\assets\images" />
       <recent name="C:\Dev\BioScripts-python\assets\gifs\father" />
       <recent name="C:\Dev\BioScripts-python\ui\tkinter" />
@@ -98,6 +74,34 @@
       <recent name="C:\Dev\BioScripts-python\assets\gifs" />
       <recent name="C:\Dev\BioScripts-python\assets\videos" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="game" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BioScripts-python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/game.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.game" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -171,153 +175,48 @@
       <option name="project" value="LOCAL" />
       <updated>1719773505456</updated>
     </task>
-    <task id="LOCAL-00008" summary="map plant positioning.">
+    <task id="LOCAL-00008" summary="Agrega cosas nuevas.">
       <option name="closed" value="true" />
-      <created>1719786639446</created>
+      <created>1719884298108</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1719786639446</updated>
+      <updated>1719884298108</updated>
     </task>
-    <task id="LOCAL-00009" summary="map plant positioning.">
+    <task id="LOCAL-00009" summary="Agrega cosas nuevas.">
       <option name="closed" value="true" />
-      <created>1719788341870</created>
+      <created>1719884324555</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1719788341870</updated>
+      <updated>1719884324555</updated>
     </task>
-    <task id="LOCAL-00010" summary="remove black background.">
-      <option name="closed" value="true" />
-      <created>1719788906549</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1719788906549</updated>
-    </task>
-    <task id="LOCAL-00011" summary="remove black background.">
-      <option name="closed" value="true" />
-      <created>1719789196926</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1719789196926</updated>
-    </task>
-    <task id="LOCAL-00012" summary="fruit giph.">
-      <option name="closed" value="true" />
-      <created>1719801101860</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1719801101860</updated>
-    </task>
-    <task id="LOCAL-00013" summary="fruit giph.">
-      <option name="closed" value="true" />
-      <created>1719801145127</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1719801145127</updated>
-    </task>
-    <task id="LOCAL-00014" summary="fruit giph.">
-      <option name="closed" value="true" />
-      <created>1719801224148</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1719801224148</updated>
-    </task>
-    <task id="LOCAL-00015" summary="fruit giph.">
-      <option name="closed" value="true" />
-      <created>1719807325681</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1719807325681</updated>
-    </task>
-    <task id="LOCAL-00016" summary="giphs.">
-      <option name="closed" value="true" />
-      <created>1719871845760</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1719871845760</updated>
-    </task>
-    <task id="LOCAL-00017" summary="pop-up.">
-      <option name="closed" value="true" />
-      <created>1719872154472</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1719872154472</updated>
-    </task>
-    <task id="LOCAL-00018" summary="pop-up-enemy.">
-      <option name="closed" value="true" />
-      <created>1719874521183</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1719874521183</updated>
-    </task>
-    <task id="LOCAL-00019" summary="pop-up-housekeeper.">
-      <option name="closed" value="true" />
-      <created>1719875080910</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1719875080910</updated>
-    </task>
-    <task id="LOCAL-00020" summary="pop-up-plants.">
-      <option name="closed" value="true" />
-      <created>1719876164950</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1719876164950</updated>
-    </task>
-    <task id="LOCAL-00021" summary="dialogue-images.">
-      <option name="closed" value="true" />
-      <created>1719882492578</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1719882492578</updated>
-    </task>
-    <task id="LOCAL-00022" summary="dialogue-images.">
-      <option name="closed" value="true" />
-      <created>1719889167830</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1719889167830</updated>
-    </task>
-    <task id="LOCAL-00023" summary="dialogue-images.">
-      <option name="closed" value="true" />
-      <created>1719889581911</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1719889581911</updated>
-    </task>
-    <option name="localTasksCounter" value="24" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit." />
-    <MESSAGE value="Agrega cosas nuevas." />
     <MESSAGE value="Map &amp; Scale." />
     <MESSAGE value="Mushroom placement." />
     <MESSAGE value="coding-area.png." />
     <MESSAGE value="giph frames." />
-    <MESSAGE value="map plant positioning." />
-    <MESSAGE value="remove black background." />
-    <MESSAGE value="fruit giph." />
-    <MESSAGE value="giphs." />
-    <MESSAGE value="pop-up." />
-    <MESSAGE value="pop-up-enemy." />
-    <MESSAGE value="pop-up-housekeeper." />
-    <MESSAGE value="pop-up-plants." />
-    <MESSAGE value="dialogue-images." />
-    <option name="LAST_COMMIT_MESSAGE" value="dialogue-images." />
+    <MESSAGE value="Agrega cosas nuevas." />
+    <option name="LAST_COMMIT_MESSAGE" value="Agrega cosas nuevas." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/game.py</url>
+          <line>419</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/game.py</url>
+          <line>180</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

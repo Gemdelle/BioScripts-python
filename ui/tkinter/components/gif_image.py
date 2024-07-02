@@ -2,10 +2,12 @@ from PIL import Image, ImageTk
 import tkinter as tk
 
 class AnimatedGIF:
-    def __init__(self, canvas, path, x, y, start_frame=0, end_frame=None):
+    def __init__(self, canvas, path, x, y, width=None, height=None, start_frame=0, end_frame=None):
         self.canvas = canvas
         self.x = x
         self.y = y
+        self.width = width
+        self.height = height
         self.path = path
         self.gif = Image.open(path)
         self.frames = []
@@ -31,7 +33,10 @@ class AnimatedGIF:
             self.index += 1
             if self.index > self.end_frame:
                 self.index = self.start_frame
-            self.gif = ImageTk.PhotoImage(self.frames[self.index])
+            frame_to_display = self.frames[self.index]
+            if self.width and self.height:
+                frame_to_display = frame_to_display.resize((self.width, self.height))
+            self.gif = ImageTk.PhotoImage(frame_to_display)
             if self.image_id is None:
                 self.image_id = self.canvas.create_image(self.x, self.y, anchor=tk.NW, image=self.gif)
             else:

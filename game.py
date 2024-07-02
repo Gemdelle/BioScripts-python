@@ -64,7 +64,7 @@ screen_height = info.current_h
 
 # Set up the window to occupy the maximum resolution without full screen
 screen = pygame.display.set_mode((screen_width, screen_height))
-screen_selected = Screens.GAME_SCREEN_MEET_HOUSEKEEPER
+screen_selected = Screens.FATHER
 pygame.display.set_caption("BioScripts")
 clock = pygame.time.Clock()
 
@@ -174,18 +174,16 @@ def start_father_screen():
         return
     father_screen_ongoing = True
     root = tk.Tk()
-    FatherScreen(root)
+    def close_app(event=None):
+        on_close(root)
+
+    FatherScreen(root, close_app)
     root.protocol("WM_DELETE_WINDOW", lambda: on_close(root))
     # Remove window decorations
     root.overrideredirect(True)
 
     # Set the size and position of the Tkinter window
     root.geometry(f"{screen_width}x{screen_height}+0+0")
-
-    # Function to exit the application
-    def close_app(event=None):
-        on_close(root)
-        go_to_game_screen_meet_housekeeper()
 
     # Bind the Escape key to exit the application
     root.bind('<Escape>', close_app)
@@ -194,9 +192,10 @@ def start_father_screen():
 # Function to handle Tkinter window close event
 def on_close(root):
     global father_screen_ongoing
-    father_screen_ongoing = False
-    root.destroy()
     resume_pygame()
+    go_to_game_screen_meet_housekeeper()
+    root.destroy()
+    father_screen_ongoing = False
 
 
 # Flag to pause Pygame loop

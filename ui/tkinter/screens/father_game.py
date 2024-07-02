@@ -9,18 +9,23 @@ from utils.resource_path_util import resource_path
 from utils.set_time_out_manager import SetTimeoutManager
 
 class FatherGame:
-    def __init__(self, root, go_next_validation):
+    def __init__(self, root, go_next):
+        self.objects = {}
         self.move_commands = {
-                    "MoveEast": lambda: self.move_right(self.objects['object4']),
-                    "MoveWest": lambda: self.move_left(self.objects['object4']),
-                    "MoveNorth": lambda: self.move_up(self.objects['object4']),
-                    "MoveSouth": lambda: self.move_down(self.objects['object4'])
+                    "MoveEast": lambda: self.move_right(self.objects['father']),
+                    "MoveWest": lambda: self.move_left(self.objects['father']),
+                    "MoveNorth": lambda: self.move_up(self.objects['father']),
+                    "MoveSouth": lambda: self.move_down(self.objects['father'])
                 }
+        self.map_limit_x = 4
+        self.map_limit_y = 4
+        self.has_lost = False
+        self.has_win = False
         self.setTimeoutManager = SetTimeoutManager()
         self.root = root
+        self.go_next = go_next
         screen_width = root.winfo_screenwidth()
         screen_height = root.winfo_screenheight()
-        self.go_next_validation = go_next_validation
 
         self.canvas = tk.Canvas(self.root)
         self.canvas.pack(fill=tk.BOTH, expand=tk.YES)
@@ -65,11 +70,19 @@ class FatherGame:
         self.tile_size = 170
         self.grid_size = 5
         tile_map_offset = 150
-        self.tile_map = tk.Canvas(self.canvas, width=self.tile_size * self.grid_size, height=self.tile_size * self.grid_size)
-        self.canvas.create_window(screen_width - (self.tile_size * self.grid_size) - tile_map_offset, screen_height - (self.tile_size * self.grid_size) - tile_map_offset, anchor='nw', window=self.tile_map)
-        self.draw_grid()
+        self.tile_map = tk.Canvas(self.canvas, width=self.tile_size * self.grid_size, height=self.tile_size * self.grid_size, borderwidth=0, highlightthickness=0)
         self.create_objects()
-        self.setTimeoutManager.setTimeout(lambda: self.move1(), 2)
+        self.canvas.create_window(screen_width - (self.tile_size * self.grid_size) - tile_map_offset, screen_height - (self.tile_size * self.grid_size) - tile_map_offset, anchor='nw', window=self.tile_map)
+        mini_game_map_image = Image.open(resource_path("assets\\images\\mini-game-map.png"))
+        mini_game_map_image = mini_game_map_image.resize((850, 850))
+        mini_game_map_image_tk = ImageTk.PhotoImage(mini_game_map_image)
+        setattr(self.tile_map, "mini_game_map_image_tk", mini_game_map_image_tk)
+        self.tile_map.create_image(0, 0, anchor='nw', image=mini_game_map_image_tk, tags="mini_game_map")
+
+        #self.draw_grid()
+
+        self.objects['father'] = self.tile_map.create_oval(
+            self.get_centered_coords(0, 4, offset=self.tile_size // 4), fill='white')
 
     def draw_grid(self):
         for i in range(self.grid_size):
@@ -81,17 +94,19 @@ class FatherGame:
                 self.tile_map.create_rectangle(x1, y1, x2, y2, outline='black')
 
     def create_objects(self):
-        self.objects = {}
-        self.objects['animal_photo'] = self.tile_map.create_rectangle(
-            self.get_centered_coords(0, 3, offset=self.tile_size // 2), fill='black')
-        self.objects['object1'] = self.tile_map.create_oval(
-            self.get_centered_coords(1, 0, offset=self.tile_size // 4), fill='green')
-        self.objects['object2'] = self.tile_map.create_oval(
-            self.get_centered_coords(2, 2, offset=self.tile_size // 4), fill='green')
-        self.objects['object3'] = self.tile_map.create_oval(
-            self.get_centered_coords(3, 1, offset=self.tile_size // 4), fill='green')
-        self.objects['object4'] = self.tile_map.create_oval(
-            self.get_centered_coords(3, 3, offset=self.tile_size // 4), fill='yellow')
+        self.objects['crystal1'] = self.tile_map.create_oval(
+            self.get_centered_coords(1, 1, offset=self.tile_size // 4), fill='orange')
+        self.objects['crystal2'] = self.tile_map.create_oval(
+            self.get_centered_coords(2, 3, offset=self.tile_size // 4), fill='grey')
+        self.objects['crystal3'] = self.tile_map.create_oval(
+            self.get_centered_coords(3, 1, offset=self.tile_size // 4), fill='red')
+        self.objects['crystal4'] = self.tile_map.create_oval(
+            self.get_centered_coords(1, 4, offset=self.tile_size // 4), fill='blue')
+        self.objects['crystal5'] = self.tile_map.create_oval(
+            self.get_centered_coords(4, 3, offset=self.tile_size // 4), fill='purple')
+        self.objects['food'] = self.tile_map.create_oval(
+            self.get_centered_coords(3, 0, offset=self.tile_size // 4), fill='black')
+
 
     def get_centered_coords(self, x, y, offset):
         x1 = x * self.tile_size + offset
@@ -101,31 +116,50 @@ class FatherGame:
         return x1, y1, x2, y2
 
     def move_right(self, obj_id):
-        self.tile_map.move(obj_id, self.tile_size, 0)
+        if not self.has_lost:
+            self.tile_map.move(obj_id, self.tile_size, 0)
+            self.check_if_lost()
 
     def move_left(self, obj_id):
-        self.tile_map.move(obj_id, -self.tile_size, 0)
+        if not self.has_lost:
+            self.tile_map.move(obj_id, -self.tile_size, 0)
+            self.check_if_lost()
 
     def move_up(self, obj_id):
-        self.tile_map.move(obj_id, 0, -self.tile_size)
+        if not self.has_lost:
+            self.tile_map.move(obj_id, 0, -self.tile_size)
+            self.check_if_lost()
 
     def move_down(self, obj_id):
-        self.tile_map.move(obj_id, 0, self.tile_size)
+        if not self.has_lost:
+            self.tile_map.move(obj_id, 0, self.tile_size)
+            self.check_if_lost()
 
-    def move1(self):
-        self.move_left(self.objects['object4'])
-        self.setTimeoutManager.setTimeout(lambda: self.move2(), 1)
+    def check_if_lost(self):
+        father_coords = self.find_object_position_by_id(self.objects['father'])
+        for key, value in self.objects.items():
+            if self.objects['father'] != value:
+                if self.objects['food'] == value:
+                    self.has_win = True
+                else:
+                    value_coords = self.find_object_position_by_id(value)
+                    if father_coords[0] == value_coords[0] and father_coords[1] == value_coords[1]:
+                        self.has_lost = True
+                        self.has_win = False
+                    elif not (0 <= father_coords[0] <= self.map_limit_x * self.tile_size) or not (0 <= father_coords[1] <= self.map_limit_y * self.tile_size):
+                        self.has_lost = True
+                        self.has_win = False
 
-    def move2(self):
-        self.move_down(self.objects['object4'])
-        self.setTimeoutManager.setTimeout(lambda: self.move3(), 1)
-
-    def move3(self):
-        self.move_left(self.objects['object4'])
-        self.setTimeoutManager.setTimeout(lambda: self.move4(), 1)
-
-    def move4(self):
-        self.move_up(self.objects['object4'])
+    def find_object_position_by_id(self, obj_id):
+        try:
+            obj_coords = self.tile_map.coords(obj_id)
+            if len(obj_coords) >= 2:
+                x, y = obj_coords[0], obj_coords[1]
+                return x, y
+            else:
+                return None
+        except tk.TclError:
+            return None
 
     def scroll_text(self, event):
         if event.keysym == "Up":
@@ -191,6 +225,9 @@ class FatherGame:
                     if command in self.move_commands and command != "":
                         self.setTimeoutManager.setTimeout(lambda cmd=command: self.move_commands[cmd](), current_delay)
                         current_delay += 1
+
+                    if command == commands[-1]:
+                        self.setTimeoutManager.setTimeout(lambda: self.check_reset_positions(), current_delay+1)
             else:
                 self.output_text.delete("1.0", tk.END)
                 self.output_text.insert(tk.END, "Error occurred during execution.\n")
@@ -199,10 +236,39 @@ class FatherGame:
         except subprocess.TimeoutExpired:
             self.output_text.delete("1.0", tk.END)
             self.output_text.insert(tk.END, "Timeout occurred during compilation or execution.\n")
+    def close_game(self):
+        self.go_next()
 
-    def go_next(self):
-        self.canvas.destroy()
-        self.go_next_validation()
+    def check_reset_positions(self):
+        if self.has_win:
+            self.close_game()
+        elif self.has_lost:
+            self.move_to_initial_positions()
+            self.has_lost = False
+            self.has_win = False
+
+    def move_to_initial_positions(self):
+        for obj_id in self.objects.values():
+            self.tile_map.coords(obj_id, *self.get_initial_position(obj_id))
+
+    def get_initial_position(self, obj_id):
+        if obj_id == self.objects['crystal1']:
+            return self.get_centered_coords(1, 1, offset=self.tile_size // 4)
+        elif obj_id == self.objects['crystal2']:
+            return self.get_centered_coords(2, 3, offset=self.tile_size // 4)
+        elif obj_id == self.objects['crystal3']:
+            return self.get_centered_coords(3, 1, offset=self.tile_size // 4)
+        elif obj_id == self.objects['crystal4']:
+            return self.get_centered_coords(1, 4, offset=self.tile_size // 4)
+        elif obj_id == self.objects['crystal5']:
+            return self.get_centered_coords(4, 3, offset=self.tile_size // 4)
+        elif obj_id == self.objects['food']:
+            return self.get_centered_coords(3, 0, offset=self.tile_size // 4)
+        elif obj_id == self.objects['father']:
+            return self.get_centered_coords(0, 4, offset=self.tile_size // 4)
+        else:
+            return (0, 0, 0, 0)
+
 
     def split_java_classes(self, java_code):
         java_classes = []
@@ -222,7 +288,6 @@ class FatherGame:
         return java_classes
 
     def extract_class_name(self, java_class):
-        # Extract class name from "public class ClassName"
         class_name_start = java_class.index("public class") + len("public class")
         class_name_end = java_class.index("{", class_name_start)
         class_name = java_class[class_name_start:class_name_end].strip()

@@ -5,10 +5,10 @@ from ui.tkinter.screens.father_validation_3 import FatherValidation3
 
 
 class FatherScreen:
-    def __init__(self, root):
+    def __init__(self, root, close_app):
         self.root = root
         self.root.title("Father Screen")
-
+        self.close_app = close_app
         self.validation_canvas = FatherValidation1(
             self.root,
             self.go_to_validation_2
@@ -27,5 +27,5 @@ class FatherScreen:
     def go_to_father_game(self):
         self.validation_canvas = FatherGame(
             self.root,
-            self.go_to_father_game
+            self.close_app
         )
