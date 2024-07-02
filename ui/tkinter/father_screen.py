@@ -9,9 +9,9 @@ class FatherScreen:
         self.root = root
         self.root.title("Father Screen")
 
-        self.validation_canvas = FatherGame(
+        self.validation_canvas = FatherValidation1(
             self.root,
-            self.go_to_father_game
+            self.go_to_validation_2
         )
 
     def go_to_validation_2(self):

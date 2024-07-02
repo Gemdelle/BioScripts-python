@@ -5,6 +5,7 @@ from tkinter import scrolledtext
 from PIL import Image, ImageTk
 
 from ui.tkinter.components.gif_image import AnimatedGIF
+from utils.constants import Constants
 from utils.resource_path_util import resource_path
 from utils.set_time_out_manager import SetTimeoutManager
 
@@ -32,6 +33,7 @@ class FatherValidation1:
 
         # Input text area
         self.input_text = scrolledtext.ScrolledText(self.root, width=50, height=30, bg='#fefbe6', borderwidth=0, highlightthickness=0, wrap=tk.NONE)
+        self.input_text.insert(tk.END, Constants.INITIAL_FATHER_VALIDATION_1_TEXT)
         self.input_text.config(xscrollcommand=None, yscrollcommand=None)  # Disable both horizontal and vertical scrollbars
         self.canvas.create_window(200, 220, anchor='nw', window=self.input_text)
 

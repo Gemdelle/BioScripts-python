@@ -7,6 +7,9 @@ import tkinter as tk
 from moviepy.editor import VideoFileClip
 import re
 
+from pygame import MOUSEBUTTONDOWN
+
+from core.analyze_character_housekeeper import AnalyzeCharacterHousekeeper
 from core.blue_tree import BlueTree
 from core.flower_1 import Flower1
 from core.flower_2 import Flower2
@@ -103,6 +106,8 @@ soil = {str(i): (Hole1() if i % 4 == 1 else Hole2() if i % 4 == 2 else Hole3() i
 mushroom_plants = {str(i): MushroomPlant() for i in range(29, 54)}
 frogs = {str(i): (FrogNautral1() if i % 3 == 0 else FrogNautral2() if i % 3 == 1 else FrogAngry()) for i in range(15, 29)}
 
+analyze_house_keeper = AnalyzeCharacterHousekeeper()
+analyzing_house_keeper = False
 
 def print_memory_usage():
     process = psutil.Process(os.getpid())
@@ -200,6 +205,8 @@ harvest_tree_command_pattern = r"player\.harvest\(tree\)"
 
 plant_hole_command_pattern = r"player\.plant\(hole\)"
 
+analyze_housekeeper_command_pattern = r"player\.analyze\(housekeeper\)"
+
 print_memmory = False
 def wrong_command():
     player.wrong_command()
@@ -234,7 +241,7 @@ def on_successful_harvest(fruit):
 # Game loop
 running = True
 
-
+show_overlay = False
 def draw_item_container_1():
     base = 395
     screen.blit(assets.item_container_img, (base, 190))
@@ -335,10 +342,30 @@ def draw_item_container_6():
             screen.blit(assets.fruit_tree_img, (base + suma * 5, 190))
 
 
+def draw_analyze_house_keeper():
+    global surf, analyze_house_keeper, screen
+    OPACITY = 180
+    overlay = pygame.Surface((screen_width, screen_height))
+    overlay.set_alpha(OPACITY)
+    overlay.fill(Constants.BLACK)
+    screen.blit(overlay, (0, 0))
+    surf = pygame.transform.flip(assets.corner_img, True, True)
+    screen.blit(surf, (0, 0))
+    pop_up_coordinates = (screen_width // 2 - (assets.mushroom_analyze_img.get_rect().width // 2), screen_height // 2 - (assets.mushroom_analyze_img.get_rect().height // 2))
+    screen.blit(assets.mushroom_analyze_img, pop_up_coordinates)
+    analyze_house_keeper.update_animation()
+    analyze_house_keeper.draw(screen, pop_up_coordinates[0] + (392 // 2), pop_up_coordinates[1] - (464 // 2))
+
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == MOUSEBUTTONDOWN and show_overlay:
+            mouse_x, mouse_y = event.pos
+            if 0 <= mouse_x <= screen_width and 0 <= mouse_y <= screen_height:
+                show_overlay = False
+                analyzing_house_keeper = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_c:
                 text_area_visible = not text_area_visible
@@ -377,6 +404,10 @@ while running:
                         print("FROG")
                     elif re.match(housekeeper_talk_command_pattern, text_input):
                         housekeeper.talk(start_tkinter_app,wrong_command)
+                    elif re.match(analyze_housekeeper_command_pattern, text_input):
+                        if housekeeper.is_colliding:
+                            show_overlay = True
+                            analyzing_house_keeper = True
                     else:
                         print("wrong_code")
                         player.wrong_command()
@@ -389,12 +420,12 @@ while running:
         # Pause Pygame loop if Tkinter app is running or if text area is visible
         if pygame_paused or text_area_visible:
             if text_area_visible:
-                # Draw text area background
                 screen.blit(assets.code_console_bg, (10, screen_height - 400))
                 text_surface = font.render(text_input, True, Constants.BLACK)
                 screen.blit(text_surface, (text_area_rect.x + 5, text_area_rect.y + 5))
+                pygame.display.flip()
+                clock.tick(60)
             continue
-
         camera_offset_x, camera_offset_y = player.get_camera_offset()
 
         screen.blit(background_img, (camera_offset_x, camera_offset_y))
@@ -484,6 +515,23 @@ while running:
         player.draw(screen, camera_offset_x, camera_offset_y)
         player.update(screen)
 
+        base = 395
+        suma = 95
+
+        screen.blit(assets.character_frame_img, (20, 20))
+        screen.blit(assets.level_bar_img, (340, 50))
+
+        draw_item_container_1()
+        draw_item_container_2()
+        draw_item_container_3()
+        draw_item_container_4()
+        draw_item_container_5()
+        draw_item_container_6()
+
+        if show_overlay:
+            if analyzing_house_keeper:
+                draw_analyze_house_keeper()
+
         # UI
         surf = pygame.transform.flip(assets.corner_img, False, True)
         screen.blit(surf, (screen_width-surf.get_rect().width,0))
@@ -492,18 +540,6 @@ while running:
 
         surf2 = pygame.transform.flip(assets.corner_img, True, False)
         screen.blit(surf2, (0,screen_height-surf2.get_rect().height))
-
-        base = 395
-        suma = 95
-
-        screen.blit(assets.character_frame_img, (20,20))
-        screen.blit(assets.level_bar_img, (340,50))
-        draw_item_container_1()
-        draw_item_container_2()
-        draw_item_container_3()
-        draw_item_container_4()
-        draw_item_container_5()
-        draw_item_container_6()
 
     elif screen_selected == Screens.SPLASH:
         splash_video.play_video(screen, go_to_introduction_1)
@@ -514,9 +550,6 @@ while running:
     elif screen_selected == Screens.FATHER:
         start_father_screen()
 
-    if not print_memmory:
-        print_memory_usage()
-        print_memmory = True
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
