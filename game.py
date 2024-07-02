@@ -245,7 +245,7 @@ analyze_mushroom_command_pattern = r"player\.analyze\(mushroom\)"
 analyze_flower_command_pattern = r"player\.analyze\(flower\)"
 analyze_shrub_command_pattern = r"player\.analyze\(shrub\)"
 analyze_small_tree_command_pattern = r"player\.analyze\(small_tree\)"
-analyze_tree_command_pattern = r"player\.analyze\(tree\)"
+analyze_tree_command_pattern = r"player\.analyze\(red_tree\)"
 
 print_memmory = False
 def wrong_command():
@@ -281,7 +281,13 @@ def on_successful_harvest(fruit):
 # Game loop
 running = True
 
-show_overlay = False
+show_overlay_analyze = False
+show_overlay_dialog_1_3 = False
+show_overlay_dialog_4_5 = False
+show_overlay_dialog_6_8 = False
+show_overlay_dialog_9_11 = False
+show_overlay_dialog_12_13 = False
+dialog_progression = 1
 def draw_item_container_1():
     base = 395
     screen.blit(assets.item_container_img, (base, 190))
@@ -516,15 +522,34 @@ def draw_analyze_disease_bar():
     pop_up_coordinates = (270,50)
     disease_bar.draw(screen, pop_up_coordinates[0] - 300, pop_up_coordinates[1] + 230) # drawing
 
+def show_dialog_1():
+
+    dialog_img = pygame.image.load(resource_path("assets\\images\\dialogue\\dialogue-1.png")).convert_alpha()
+    dialog_img = pygame.transform.scale(dialog_img, (screen_width, screen_height))
+    screen.blit(dialog_img, (0,0))
+
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == MOUSEBUTTONDOWN and show_overlay:
+        elif event.type == MOUSEBUTTONDOWN and show_overlay_analyze:
             mouse_x, mouse_y = event.pos
             if 0 <= mouse_x <= screen_width and 0 <= mouse_y <= screen_height:
-                show_overlay = False
+                show_overlay_analyze = False
                 analyzing_house_keeper = False
+                analyzing_frog = False
+                analyzing_enemy = False
+                analyzing_mushroom = False
+                analyzing_flower = False
+                analyzing_shrub = False
+                analyzing_small_tree = False
+                analyzing_tree = False
+                show_overlay_dialog_1_3 = False
+                show_overlay_dialog_4_5 = False
+                show_overlay_dialog_6_8 = False
+                show_overlay_dialog_9_11 = False
+                show_overlay_dialog_12_13 = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_c:
                 text_area_visible = not text_area_visible
@@ -566,41 +591,41 @@ while running:
                     # ANALYZE
                     elif re.match(analyze_housekeeper_command_pattern, text_input):
                         if housekeeper.is_colliding:
-                            show_overlay = True
+                            show_overlay_analyze = True
                             analyzing_house_keeper = True
                     elif re.match(analyze_enemy_command_pattern, text_input):
                         if enemy.is_colliding:
-                            show_overlay = True
+                            show_overlay_analyze = True
                             analyzing_enemy = True
                     elif re.match(analyze_frog_command_pattern, text_input):
                         for key, frog in frogs.items():
                             if frog.is_colliding:
-                                show_overlay = True
+                                show_overlay_analyze = True
                                 analyzing_frog = True
                     elif re.match(analyze_mushroom_command_pattern, text_input):
                         for key, mushroom in mushroom_plants.items():
                             if mushroom.is_colliding:
-                                show_overlay = True
+                                show_overlay_analyze = True
                                 analyzing_mushroom = True
                     elif re.match(analyze_flower_command_pattern, text_input):
                         for key, flower in flowers.items():
                             if flower.is_colliding:
-                                show_overlay = True
+                                show_overlay_analyze = True
                                 analyzing_flower = True
                     elif re.match(analyze_shrub_command_pattern, text_input):
                         for key, shrub in shrubs.items():
                             if shrub.is_colliding:
-                                show_overlay = True
+                                show_overlay_analyze = True
                                 analyzing_shrub = True
                     elif re.match(analyze_small_tree_command_pattern, text_input):
-                        for key, frog in small_tree.items():
-                            if small_tree.is_colliding:
-                                show_overlay = True
+                        for key, s_tree in small_tree.items():
+                            if s_tree.is_colliding:
+                                show_overlay_analyze = True
                                 analyzing_small_tree = True
                     elif re.match(analyze_tree_command_pattern, text_input):
-                        for key, tree in tree.items():
+                        for key, tree in red_tree.items():
                             if tree.is_colliding:
-                                show_overlay = True
+                                show_overlay_analyze = True
                                 analyzing_tree = True
 
                     else:
@@ -723,7 +748,7 @@ while running:
         draw_item_container_5()
         draw_item_container_6()
 
-        if show_overlay:
+        if show_overlay_analyze:
             if analyzing_house_keeper:
                 draw_analyze_house_keeper()
                 draw_analyze_disease_bar()
@@ -748,6 +773,14 @@ while running:
             if analyzing_tree:
                 draw_analyze_tree()
                 draw_analyze_disease_bar()
+        elif show_overlay_dialog_1_3:
+            if dialog_progression == 1:
+                show_dialog_1()
+                show_dialog_1()
+        # show_overlay_dialog_4_5 = False
+        # show_overlay_dialog_6_8 = False
+        # show_overlay_dialog_9_11 = False
+        # show_overlay_dialog_12_13 = False
 
         # UI
         surf = pygame.transform.flip(assets.corner_img, False, True)
@@ -759,11 +792,7 @@ while running:
         screen.blit(surf2, (0,screen_height-surf2.get_rect().height))
 
     elif screen_selected == Screens.SPLASH:
-        splash_video.play_video(screen, go_to_introduction_1)
-    elif screen_selected == Screens.INTRODUCTION_1:
-        introduction_1_video.play_video(screen, go_to_introduction_2)
-    elif screen_selected == Screens.INTRODUCTION_2:
-        introduction_2_video.play_video(screen, go_to_father_screen)
+        splash_video.play_video(screen, go_to_father_screen())
     elif screen_selected == Screens.FATHER:
         start_father_screen()
 

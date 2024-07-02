@@ -14,6 +14,7 @@ class AssetsPreloader:
         return cls._instance
 
     def __init__(self):
+
         if not self._initialized:
             # UI
             self.corner_img = None
@@ -38,7 +39,13 @@ class AssetsPreloader:
             self.fruit_shrub_img = None
             self.fruit_small_tree_img = None
             self.fruit_tree_img = None
-
+            self.tree_analyze_img = None
+            self.small_tree_analyze_img = None
+            self.shrub_analyze_img = None
+            self.housekeeper_analyze_img = None
+            self.frog_analyze_img = None
+            self.flower_analyze_img = None
+            self.enemy_analyze_img = None
             self.mushroom_analyze_img = None
             self._initialized = True
 
